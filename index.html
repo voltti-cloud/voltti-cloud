@@ -7,32 +7,53 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <header>
         <div class="logo">VOLT<span>TI</span></div>
+        <div class="header-icons">
+            <i data-lucide="search"></i>
+            <i data-lucide="user"></i>
+        </div>
     </header>
 
     <main>
         <section class="featured">
             <div class="featured-card">
-                <div class="badge">NOVO</div>
-                <h2>Filme em Destaque</h2>
-                <button class="btn-play">ASSISTIR AGORA</button>
+                <div class="featured-content">
+                    <div class="badge">DESTAQUE</div>
+                    <h2>The Last of Us</h2>
+                    <button class="btn-play">ASSISTIR AGORA</button>
+                </div>
             </div>
         </section>
 
         <section class="catalog">
-            <h3>Mais Populares</h3>
-            <div class="grid">
-                <div class="movie-card"></div>
-                <div class="movie-card"></div>
-                <div class="movie-card"></div>
-                <div class="movie-card"></div>
+            <div class="section-header">
+                <h3>Mais Populares</h3>
+                <span>Ver tudo</span>
+            </div>
+            <div class="scroll-row">
+                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg')"></div>
+                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/8GxvA9zDZ9G0QZ8vjZnuD6P0pXb.jpg')"></div>
+                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/i8v6S8p0vXfI496N3FmUclI7m9o.jpg')"></div>
+                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/fcid98gh9498hg94.jpg')"></div>
             </div>
         </section>
     </main>
 
+    <nav class="tab-bar">
+        <div class="tab-item active"><i data-lucide="home"></i><span>Início</span></div>
+        <div class="tab-item"><i data-lucide="star"></i><span>Destaques</span></div>
+        <div class="tab-item"><i data-lucide="tv"></i><span>Séries</span></div>
+        <div class="tab-item"><i data-lucide="user"></i><span>Conta</span></div>
+    </nav>
+
+    <script>
+        // Inicializa os ícones
+        lucide.createIcons();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
