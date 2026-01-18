@@ -2,15 +2,37 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VOLTTI Cloud</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="glass-container">
-        <h1 class="logo">VOLT<span>TI</span></h1>
-        <p>Premium Cloud Streaming</p>
-        <button class="btn-play">ACESSAR PLAY</button>
-    </div>
+    <header>
+        <div class="logo">VOLT<span>TI</span></div>
+    </header>
+
+    <main>
+        <section class="featured">
+            <div class="featured-card">
+                <div class="badge">NOVO</div>
+                <h2>Filme em Destaque</h2>
+                <button class="btn-play">ASSISTIR AGORA</button>
+            </div>
+        </section>
+
+        <section class="catalog">
+            <h3>Mais Populares</h3>
+            <div class="grid">
+                <div class="movie-card"></div>
+                <div class="movie-card"></div>
+                <div class="movie-card"></div>
+                <div class="movie-card"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
