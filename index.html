@@ -10,50 +10,81 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+    <div id="search-bar" class="search-overlay">
+        <input type="text" placeholder="Pesquisar filmes e séries..." id="search-input">
+        <button onclick="toggleSearch()">✕</button>
+    </div>
+
     <header>
         <div class="logo">VOLT<span>TI</span></div>
         <div class="header-icons">
-            <i data-lucide="search"></i>
-            <i data-lucide="user"></i>
+            <i data-lucide="search" onclick="toggleSearch()"></i>
+            <i data-lucide="user" onclick="showPage('user-page', document.querySelector('.tab-user'))"></i>
         </div>
     </header>
 
-    <main>
+    <main id="home-page" class="page active">
         <section class="featured">
             <div class="featured-card">
                 <div class="featured-content">
                     <div class="badge">DESTAQUE</div>
                     <h2>The Last of Us</h2>
-                    <button class="btn-play">ASSISTIR AGORA</button>
+                    <button class="btn-play" onclick="openPlayer('The Last of Us')">ASSISTIR AGORA</button>
                 </div>
             </div>
         </section>
 
         <section class="catalog">
-            <div class="section-header">
-                <h3>Mais Populares</h3>
-                <span>Ver tudo</span>
-            </div>
+            <div class="section-header"><h3>Mais Populares</h3><span>Ver todos</span></div>
             <div class="scroll-row">
-                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg')"></div>
-                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/8GxvA9zDZ9G0QZ8vjZnuD6P0pXb.jpg')"></div>
-                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/i8v6S8p0vXfI496N3FmUclI7m9o.jpg')"></div>
-                <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/w500/fcid98gh9498hg94.jpg')"></div>
+                <div class="movie-card" onclick="openPlayer('Filme 1')" style="background-image: url('https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg')"></div>
+                <div class="movie-card" onclick="openPlayer('Filme 2')" style="background-image: url('https://image.tmdb.org/t/p/w500/8GxvA9zDZ9G0QZ8vjZnuD6P0pXb.jpg')"></div>
+                <div class="movie-card" onclick="openPlayer('Filme 3')" style="background-image: url('https://image.tmdb.org/t/p/w500/i8v6S8p0vXfI496N3FmUclI7m9o.jpg')"></div>
+            </div>
+        </section>
+
+        <section class="catalog">
+            <div class="section-header"><h3>Lançamentos</h3><span>Ver todos</span></div>
+            <div class="scroll-row">
+                <div class="movie-card" onclick="openPlayer('Filme 4')" style="background-image: url('https://image.tmdb.org/t/p/w500/A76uLy9oD29ty6Syo9vYn9uY09q.jpg')"></div>
+                <div class="movie-card" onclick="openPlayer('Filme 5')" style="background-image: url('https://image.tmdb.org/t/p/w500/dB97686p62S6S0pX1589o09pXbV.jpg')"></div>
+                <div class="movie-card" onclick="openPlayer('Filme 6')" style="background-image: url('https://image.tmdb.org/t/p/w500/39s9pS6pX1589o09pXbV39s9pS6.jpg')"></div>
             </div>
         </section>
     </main>
 
+    <main id="user-page" class="page">
+        <div class="profile-header">
+            <div class="avatar">V</div>
+            <h2>Usuário Voltti</h2>
+            <p>Plano Premium Ativo</p>
+            <div class="user-menu">
+                <button class="btn-user">Minha Assinatura</button>
+                <button class="btn-user">Configurações</button>
+                <button class="btn-user logout">Sair da Conta</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="video-overlay" class="video-overlay">
+        <button class="close-player" onclick="closePlayer()">✕ Sair</button>
+        <div class="player-container">
+            <p id="video-title">Carregando...</p>
+            <div class="placeholder-video">
+                <i data-lucide="play-circle" size="64"></i>
+                <p>O Motor VPS será conectado aqui na quarta.</p>
+            </div>
+        </div>
+    </div>
+
     <nav class="tab-bar">
-        <div class="tab-item active"><i data-lucide="home"></i><span>Início</span></div>
-        <div class="tab-item"><i data-lucide="star"></i><span>Destaques</span></div>
-        <div class="tab-item"><i data-lucide="tv"></i><span>Séries</span></div>
-        <div class="tab-item"><i data-lucide="user"></i><span>Conta</span></div>
+        <div class="tab-item active" onclick="showPage('home-page', this)"><i data-lucide="home"></i><span>Início</span></div>
+        <div class="tab-item" onclick="showPage('home-page', this)"><i data-lucide="star"></i><span>Destaques</span></div>
+        <div class="tab-item" onclick="showPage('home-page', this)"><i data-lucide="tv"></i><span>Séries</span></div>
+        <div class="tab-item tab-user" onclick="showPage('user-page', this)"><i data-lucide="user"></i><span>Conta</span></div>
     </nav>
 
-    <script>
-        // Inicializa os ícones
-        lucide.createIcons();
-    </script>
     <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
