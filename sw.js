@@ -1,26 +1,8 @@
-const cacheName = 'voltti-v1';
-const assets = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/manifest.json'
-];
-
-// Instala o Service Worker e guarda os arquivos no cache
-self.addEventListener('install', evt => {
-  evt.waitUntil(
-    caches.open(cacheName).then(cache => {
-      cache.addAll(assets);
-    })
-  );
+const CACHE_NAME = 'voltti-v1';
+const ASSETS = ['./','./index.html','./style.css','./script.js','./manifest.json'];
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
 });
-
-// Faz o site carregar instantaneamente usando o cache
-self.addEventListener('fetch', evt => {
-  evt.respondWith(
-    caches.match(evt.request).then(rec => {
-      return rec || fetch(evt.request);
-    })
-  );
+self.addEventListener('fetch', (e) => {
+  e.respondWith(caches.match(e.request).then((res) => res || fetch(e.request)));
 });
