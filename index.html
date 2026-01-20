@@ -5,32 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <header>
-        <div class="logo">VOLT<span>TI</span></div>
-    </header>
-    
-    <main id="home-page" class="page active" style="padding: 20px">
+    <header><div class="logo">VOLT<span>TI</span></div></header>
+    <main id="home-page" class="page active">
         <div class="catalog">
             <h3>🎬 Filmes</h3>
             <div id="lista-filmes" class="scroll-row"></div>
         </div>
-
         <div class="catalog">
             <h3>📺 Séries</h3>
             <div id="lista-series" class="scroll-row"></div>
         </div>
+        <div class="catalog">
+            <h3>🎎 Doramas</h3>
+            <div id="lista-doramas" class="scroll-row"></div>
+        </div>
     </main>
-
     <div id="video-overlay" class="video-overlay">
-        <button onclick="closePlayer()" style="position:absolute; top:20px; right:20px; background:rgba(0,0,0,0.5); color:white; border:none; width:40px; height:40px; border-radius:50%; cursor:pointer; z-index:100">✕</button>
-        <div style="flex:1; display:flex; align-items:center; justify-content:center; flex-direction:column; width:100%">
-            <h2 id="video-title" style="margin-bottom:15px; color:var(--accent)"></h2>
-            <div id="player-container" style="width:100%; max-width:900px; padding:0 15px;"></div>
+        <button onclick="closePlayer()" class="close-btn" style="position:absolute; top:20px; right:20px; background:rgba(0,0,0,0.5); color:white; border:none; width:40px; height:40px; border-radius:50%; cursor:pointer; z-index:100">✕</button>
+        <div class="player-wrapper" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;">
+            <h2 id="video-title" style="color:#00e5ff; margin-bottom:15px;"></h2>
+            <div id="player-container" style="width:90%; max-width:900px;"></div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
