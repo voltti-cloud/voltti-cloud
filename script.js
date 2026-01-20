@@ -10,28 +10,29 @@ const DB = {
 function render(category) {
     const grid = document.getElementById('grid-content');
     const items = DB[category] || [];
+    document.getElementById('section-title').innerText = category.charAt(0).toUpperCase() + category.slice(1);
     
-    grid.innerHTML = items.map(item => `
+    grid.innerHTML = items.length > 0 ? items.map(item => `
         <div class="movie-card" style="background-image: url('${item.c}')" onclick="openVideo('${item.t}', '${item.u}')"></div>
-    `).join('');
+    `).join('') : '<p style="padding:20px; color:#444;">Em breve...</p>';
 }
 
 function openVideo(title, url) {
     document.getElementById('player-title').innerText = title;
-    document.getElementById('video-wrapper').innerHTML = `
-        <video controls autoplay playsinline>
+    document.getElementById('video-container').innerHTML = `
+        <video id="v-play" controls autoplay playsinline>
             <source src="${url}" type="video/mp4">
         </video>`;
     document.getElementById('player-view').style.display = 'flex';
 }
 
 function closePlayer() {
-    document.getElementById('video-wrapper').innerHTML = '';
+    document.getElementById('video-container').innerHTML = '';
     document.getElementById('player-view').style.display = 'none';
 }
 
 function changeTab(cat, btn) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     render(cat);
 }

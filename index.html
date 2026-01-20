@@ -2,32 +2,41 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>VOLTTI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="logo">VOLTTI</div>
-        <div class="user-icon">S</div>
-    </nav>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="changeTab('filmes', this)">Filmes</button>
-        <button class="tab-btn" onclick="changeTab('series', this)">Séries</button>
-        <button class="tab-btn" onclick="changeTab('doramas', this)">Doramas</button>
-    </div>
+    <header class="main-header">
+        <div class="logo">VOLT<span>TI</span></div>
+    </header>
 
     <main id="app">
+        <h2 id="section-title">Filmes</h2>
         <div id="grid-content" class="grid-container"></div>
     </main>
 
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="changeTab('filmes', this)">
+            <span class="icon">🎬</span>
+            <span class="label">Filmes</span>
+        </div>
+        <div class="nav-item" onclick="changeTab('series', this)">
+            <span class="icon">📺</span>
+            <span class="label">Séries</span>
+        </div>
+        <div class="nav-item" onclick="changeTab('doramas', this)">
+            <span class="icon">🎎</span>
+            <span class="label">Doramas</span>
+        </div>
+    </nav>
+
     <div id="player-view" class="player-view">
-        <div class="player-top">
-            <button class="back-btn" onclick="closePlayer()">← Voltar</button>
+        <div class="player-header">
+            <button class="close-btn" onclick="closePlayer()">✕</button>
             <span id="player-title"></span>
         </div>
-        <div id="video-wrapper"></div>
+        <div id="video-container"></div>
     </div>
 
     <script src="script.js"></script>

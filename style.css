@@ -1,27 +1,54 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding-top: 110px; }
-
-/* Header e Tabs fixas para não bugar no scroll */
-.top-nav { position: fixed; top: 0; width: 100%; height: 60px; background: #000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 10; }
-.logo { font-weight: bold; font-size: 1.5rem; color: #00e5ff; letter-spacing: 1px; }
-.user-icon { background: #333; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-
-.tabs { position: fixed; top: 60px; width: 100%; height: 50px; background: #000; display: flex; align-items: center; gap: 20px; padding: 0 20px; z-index: 10; border-bottom: 1px solid #111; }
-.tab-btn { background: none; border: none; color: #888; font-size: 1rem; padding: 5px 0; cursor: pointer; }
-.tab-btn.active { color: #fff; border-bottom: 2px solid #00e5ff; }
-
-/* Grid de Filmes - Otimizado para Mobile */
-.grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; }
-.movie-card { width: 100%; aspect-ratio: 2/3; background-size: cover; background-position: center; border-radius: 6px; background-color: #111; }
-
-/* Player View - Tela cheia instantânea */
-.player-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; flex-direction: column; }
-.player-top { padding: 15px; display: flex; align-items: center; gap: 15px; background: linear-gradient(to bottom, #000, transparent); }
-.back-btn { background: #00e5ff; border: none; border-radius: 4px; padding: 5px 12px; font-weight: bold; }
-#video-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; }
-video { width: 100%; max-height: 80vh; background: #000; }
-
-/* Tablets e PCs */
-@media (min-width: 768px) {
-    .grid-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+body { 
+    background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    margin: 0; padding-bottom: 80px; padding-top: 70px; 
 }
+
+/* Topo */
+.main-header { 
+    position: fixed; top: 0; width: 100%; height: 60px; 
+    background: rgba(0,0,0,0.9); display: flex; align-items: center; 
+    justify-content: center; z-index: 100; border-bottom: 1px solid #111;
+}
+.logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; }
+.logo span { color: #00e5ff; }
+
+/* Grid */
+#app { padding: 0 10px; }
+#section-title { font-size: 1.2rem; margin: 15px 5px; font-weight: 600; }
+.grid-container { 
+    display: grid; grid-template-columns: repeat(3, 1fr); 
+    gap: 8px; 
+}
+.movie-card { 
+    width: 100%; aspect-ratio: 2/3; background-size: cover; 
+    background-position: center; border-radius: 6px; background-color: #1a1a1a;
+    transition: 0.2s;
+}
+.movie-card:active { transform: scale(0.95); }
+
+/* Menu Inferior */
+.bottom-nav { 
+    position: fixed; bottom: 0; width: 100%; height: 65px; 
+    background: #050505; border-top: 1px solid #1a1a1a;
+    display: flex; justify-content: space-around; align-items: center; z-index: 100;
+}
+.nav-item { 
+    display: flex; flex-direction: column; align-items: center; 
+    color: #666; font-size: 0.7rem; cursor: pointer; transition: 0.3s;
+}
+.nav-item .icon { font-size: 1.4rem; margin-bottom: 4px; }
+.nav-item.active { color: #00e5ff; }
+
+/* Player View */
+.player-view { 
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: #000; z-index: 200; flex-direction: column; 
+}
+.player-header { padding: 20px; display: flex; align-items: center; gap: 20px; }
+.close-btn { 
+    background: #222; border: none; color: white; width: 40px; height: 40px; 
+    border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+}
+#video-container { flex: 1; display: flex; align-items: center; justify-content: center; }
+video { width: 100%; max-height: 80vh; }
