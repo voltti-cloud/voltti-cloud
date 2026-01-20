@@ -12,7 +12,7 @@ function render() {
         if(!el) return;
         el.innerHTML = data.length ? data.map(i => `
             <div class="movie-card" style="background-image: url('${i.capa}')" onclick="playEmbutido('${i.titulo}', '${i.url}')"></div>
-        `).join('') : '<p style="color:#555; font-size:0.8rem; padding-left:15px;">Em breve...</p>';
+        `).join('') : '<p style="color:#555; padding-left:15px;">Em breve...</p>';
     };
     renderRow('lista-filmes', VOLTTI_DATA.filmes);
     renderRow('lista-series', VOLTTI_DATA.series);
@@ -22,27 +22,23 @@ function render() {
 function playEmbutido(title, url) {
     const videoSection = document.getElementById('video-section');
     const playerTarget = document.getElementById('player-target');
-    const header = document.getElementById('main-header');
     
     document.getElementById('current-title').innerText = title;
     
-    // Injeta o player com flags de áudio forçadas
+    // Mostra a seção primeiro
+    videoSection.style.display = 'block';
+    
+    // Injeta o player
     playerTarget.innerHTML = `
-        <video id="vlt-video" controls autoplay playsinline webkit-playsinline>
+        <video controls autoplay playsinline>
             <source src="${url}" type="video/mp4">
         </video>`;
     
-    const v = document.getElementById('vlt-video');
-    v.volume = 1.0;
-    
-    videoSection.style.display = 'block';
-    header.style.display = 'none'; // Esconde o logo para focar no vídeo
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function closePlayer() {
     document.getElementById('video-section').style.display = 'none';
-    document.getElementById('main-header').style.display = 'flex';
     document.getElementById('player-target').innerHTML = '';
 }
 
