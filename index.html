@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
@@ -16,7 +17,7 @@
             <button class="btn-close" onclick="closePlayer()">FECHAR X</button>
         </div>
         <div class="video-container">
-            <video id="player" playsinline controls crossorigin="anonymous"></video>
+            <video id="player" playsinline controls referrerpolicy="no-referrer"></video>
         </div>
     </div>
 

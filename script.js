@@ -12,8 +12,7 @@ const DB = {
         t: "A Culpa é das Estrelas", 
         c: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", 
         u: "http://motor.voltti.cloud/stream/6?hash=9555df" 
-    }],
-    series: []
+    }]
 };
 
 function render() {
@@ -31,25 +30,15 @@ function openPlayer(title, url) {
     document.getElementById('v-title').innerText = title;
     overlay.style.display = 'flex';
 
-    // Se estiver no celular, usamos o proxy para garantir que o HTTPS não bloqueie o vídeo
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    let finalUrl = url;
-    
-    if (isMobile) {
-        // Proxy específico para mobile rodar link http em site https
-        finalUrl = "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=604800&url=" + encodeURIComponent(url);
-    }
-
+    // Link Direto: Como adicionamos 'no-referrer' no HTML, o servidor não saberá que é a VOLTTI pedindo
     vltPlayer.source = {
         type: 'video',
-        sources: [{ src: finalUrl, type: 'video/mp4' }]
+        sources: [{ src: url, type: 'video/mp4' }]
     };
 
     setTimeout(() => {
-        vltPlayer.play().catch(e => {
-            console.log("Play pendente...");
-        });
-    }, 800);
+        vltPlayer.play().catch(e => console.log("Aguardando interação..."));
+    }, 500);
 }
 
 function closePlayer() {
