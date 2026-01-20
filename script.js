@@ -13,29 +13,26 @@ const filmes = [
 
 function render() {
     const container = document.getElementById('lista-filmes');
-    if(container) {
-        container.innerHTML = filmes.map(f => `
-            <div class="movie-card" style="background-image: url('${f.capa}')" onclick="openPlayer('${f.titulo}', '${f.url}')"></div>
-        `).join('');
-    }
+    if (!container) return;
+    
+    container.innerHTML = filmes.map(f => `
+        <div class="movie-card" 
+             style="background-image: url('${f.capa}'); width: 160px; height: 240px; background-size: cover; border-radius: 10px; flex-shrink: 0; cursor: pointer; border: 2px solid #333;" 
+             onclick="openPlayer('${f.titulo}', '${f.url}')">
+        </div>
+    `).join('');
 }
 
 function openPlayer(title, url) {
     document.getElementById('video-title').innerText = title;
     document.getElementById('player-container').innerHTML = `
-        <video id="main-video" controls crossorigin="anonymous" style="width:100%; border-radius:10px; background: #000;">
+        <video id="main-video" controls autoplay style="width:100%; border-radius:10px;">
             <source src="${url}" type="video/mp4">
         </video>`;
-    
     document.getElementById('video-overlay').classList.add('active');
-    const v = document.getElementById('main-video');
-    v.volume = 1.0;
-    v.load();
 }
 
 function closePlayer() {
-    const v = document.getElementById('main-video');
-    if(v) v.pause();
     document.getElementById('player-container').innerHTML = '';
     document.getElementById('video-overlay').classList.remove('active');
 }

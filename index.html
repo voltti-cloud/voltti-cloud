@@ -10,18 +10,19 @@
     <header><div class="logo">VOLT<span>TI</span></div></header>
     
     <div class="catalog">
-        <h3>🎬 Filmes</h3>
-        <div id="lista-filmes" class="scroll-row"></div>
+        <h3>🎬 Filmes para Sandy</h3>
+        <div id="lista-filmes" class="scroll-row" style="display: flex; gap: 15px; overflow-x: auto; min-height: 250px;">
+            </div>
     </div>
 
     <div id="video-overlay" class="video-overlay">
         <button onclick="closePlayer()" class="close-btn">✕ Fechar</button>
         <div class="player-wrapper">
-            <h2 id="video-title" style="color: #00e5ff; margin-bottom: 20px;"></h2>
+            <h2 id="video-title" style="color: #00e5ff;"></h2>
             <div id="player-container"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=1.2"></script>
 </body>
 </html>
