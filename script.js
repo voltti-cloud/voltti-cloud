@@ -3,15 +3,15 @@ let vltPlayer;
 function initPlayer() {
     vltPlayer = new Plyr('#player', {
         controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
-        autoplay: false
     });
 }
 
 const DB = {
     filmes: [{ 
-        t: "A Culpa é das Estrelas", 
+        t: "Teste de Sinal (Vídeo Seguro)", 
         c: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", 
-        u: "http://motor.voltti.cloud/stream/6?hash=9555df" 
+        // VÍDEO DE TESTE EM HTTPS (PARA VER SE O PLAYER RODA)
+        u: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
     }]
 };
 
@@ -28,20 +28,12 @@ function render() {
 function openPlayer(title, url) {
     document.getElementById('v-title').innerText = title;
     document.getElementById('player-overlay').style.display = 'flex';
-
-    vltPlayer.source = {
-        type: 'video',
-        sources: [{ src: url, type: 'video/mp4' }]
-    };
-
-    setTimeout(() => {
-        vltPlayer.play().catch(e => console.log("Aguardando interação..."));
-    }, 500);
+    vltPlayer.source = { type: 'video', sources: [{ src: url, type: 'video/mp4' }] };
+    vltPlayer.play();
 }
 
 function closePlayer() {
     vltPlayer.stop();
     document.getElementById('player-overlay').style.display = 'none';
 }
-
 window.onload = render;
