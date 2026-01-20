@@ -2,41 +2,23 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOLTTI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <div class="logo">VOLT<span>TI</span></div>
-    </header>
+    <div class="top-bar">VOLT<span>TI</span></div>
+    
+    <div class="content">
+        <div class="category">
+            <h2>🎬 Filmes</h2>
+            <div id="movie-list" class="movie-row"></div>
+        </div>
+    </div>
 
-    <main class="container">
-        <h2 id="view-title">Filmes</h2>
-        <div id="grid" class="grid"></div>
-    </main>
-
-    <nav class="tabbar">
-        <div class="tab-item active" onclick="tab('filmes', this)">
-            <span class="tab-icon">🎬</span>
-            <span class="tab-label">Filmes</span>
-        </div>
-        <div class="tab-item" onclick="tab('series', this)">
-            <span class="tab-icon">📺</span>
-            <span class="tab-label">Séries</span>
-        </div>
-        <div class="tab-item" onclick="tab('doramas', this)">
-            <span class="tab-icon">🎎</span>
-            <span class="tab-label">Doramas</span>
-        </div>
-    </nav>
-
-    <div id="player" class="player">
-        <div class="player-nav">
-            <button onclick="closeP()">✕ Voltar</button>
-            <b id="p-title"></b>
-        </div>
-        <div id="p-cont" class="p-cont"></div>
+    <div id="video-overlay" class="video-overlay">
+        <button onclick="closeVid()" class="close-btn">✕ Voltar</button>
+        <div id="player-wrap"></div>
     </div>
 
     <script src="script.js"></script>
