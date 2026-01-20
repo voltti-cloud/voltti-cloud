@@ -2,44 +2,27 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
 body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-/* Centralização para testes no PC */
 main, header { max-width: 600px; margin: 0 auto; }
 
-header { 
-    height: 60px; display: flex; align-items: center; justify-content: center; 
-    background: var(--surface); border-bottom: 1px solid #222;
-}
+header { height: 60px; display: flex; align-items: center; justify-content: center; background: var(--surface); border-bottom: 1px solid #222; }
 .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; }
 .logo span { color: var(--accent); }
 
-/* PLAYER OVERLAY - MODO CINEMA */
 #player-overlay { 
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: #000; z-index: 99999; flex-direction: column; align-items: center; justify-content: center;
 }
 .video-container { width: 100%; max-width: 900px; aspect-ratio: 16/9; background: #000; }
-.player-header { 
-    width: 100%; max-width: 900px; padding: 15px; background: rgba(20,20,20,0.9);
-    display: flex; justify-content: space-between; align-items: center;
-}
+.player-header { width: 100%; max-width: 900px; padding: 15px; background: #121212; display: flex; justify-content: space-between; align-items: center; }
 .btn-close { background: #ff3e3e; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; font-weight: bold; cursor: pointer; }
 
-/* CATÁLOGO */
 .catalog { padding: 20px 15px; }
 .catalog h3 { font-size: 0.8rem; color: #666; text-transform: uppercase; margin-bottom: 15px; }
 .scroll-row { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px; scrollbar-width: none; }
 .scroll-row::-webkit-scrollbar { display: none; }
-.movie-card { 
-    min-width: 140px; height: 210px; background-size: cover; border-radius: 12px; 
-    flex-shrink: 0; border: 1px solid #222; background-position: center; cursor: pointer;
-}
+.movie-card { min-width: 140px; height: 210px; background-size: cover; border-radius: 12px; flex-shrink: 0; border: 1px solid #222; background-position: center; cursor: pointer; }
 
-/* TAB BAR */
-.tab-bar { 
-    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 600px; height: 70px; background: #121212; 
-    display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #222;
-}
+.tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px; height: 70px; background: #121212; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #222; }
 .tab-item { color: #555; text-decoration: none; font-size: 0.7rem; text-align: center; }
 .tab-item.active { color: var(--accent); }
 .tab-item i { display: block; font-size: 1.4rem; margin-bottom: 4px; }
