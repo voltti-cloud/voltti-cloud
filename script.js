@@ -8,10 +8,9 @@ function initPlayer() {
 
 const DB = {
     filmes: [{ 
-        t: "Teste de Sinal (Vídeo Seguro)", 
+        t: "A Culpa é das Estrelas", 
         c: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", 
-        // VÍDEO DE TESTE EM HTTPS (PARA VER SE O PLAYER RODA)
-        u: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
+        u: "http://motor.voltti.cloud/stream/6?hash=9555df" 
     }]
 };
 
@@ -28,8 +27,18 @@ function render() {
 function openPlayer(title, url) {
     document.getElementById('v-title').innerText = title;
     document.getElementById('player-overlay').style.display = 'flex';
-    vltPlayer.source = { type: 'video', sources: [{ src: url, type: 'video/mp4' }] };
-    vltPlayer.play();
+    
+    // Resetando o source para o filme real
+    vltPlayer.source = {
+        type: 'video',
+        sources: [{ src: url, type: 'video/mp4' }]
+    };
+
+    setTimeout(() => {
+        vltPlayer.play().catch(() => {
+            console.log("Clique no play para iniciar o filme");
+        });
+    }, 500);
 }
 
 function closePlayer() {
