@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VOLTTI CLOUD</title>
-    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <section id="player-container">
-        <div style="padding:10px; background:#16161a; display:flex; justify-content:space-between; align-items:center;">
-            <span id="video-title" style="font-size:0.8rem; color:#00e5ff"></span>
-            <button onclick="closePlayer()" style="background:#ff4b2b; color:#fff; border:none; padding:5px 10px; border-radius:4px; font-weight:bold;">FECHAR X</button>
+    <section id="player-section">
+        <div class="v-container" id="video-target"></div>
+        <div class="v-meta">
+            <h2 id="v-title">Título</h2>
+            <button class="close-btn" onclick="closePlayer()">FECHAR [X]</button>
         </div>
-        <div id="video-placeholder"></div>
     </section>
 
-    <header id="vlt-header"><div class="logo">VOLT<span>TI</span></div></header>
+    <header id="main-header"><div class="logo">VOLT<span>TI</span></div></header>
 
     <main>
-        <div class="catalog"><h3>🎬 Filmes</h3><div id="lista-filmes" class="scroll-row"></div></div>
-        <div class="catalog"><h3>📺 Séries</h3><div id="lista-series" class="scroll-row"></div></div>
+        <div class="catalog"><h3>🎬 Filmes</h3><div id="list-movies" class="scroll-row"></div></div>
+        <div class="catalog"><h3>📺 Séries</h3><div id="list-series" class="scroll-row"></div></div>
     </main>
 
     <nav class="tab-bar">
@@ -30,7 +29,6 @@
         <a href="#" class="tab-item"><i data-lucide="tv"></i>Séries</a>
     </nav>
 
-    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
     <script src="script.js"></script>
     <script>lucide.createIcons();</script>
 </body>
