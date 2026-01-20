@@ -26,11 +26,9 @@ function render() {
 }
 
 function openPlayer(title, url) {
-    const overlay = document.getElementById('player-overlay');
     document.getElementById('v-title').innerText = title;
-    overlay.style.display = 'flex';
+    document.getElementById('player-overlay').style.display = 'flex';
 
-    // Link Direto: Como adicionamos 'no-referrer' no HTML, o servidor não saberá que é a VOLTTI pedindo
     vltPlayer.source = {
         type: 'video',
         sources: [{ src: url, type: 'video/mp4' }]
