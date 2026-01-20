@@ -2,22 +2,40 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VOLTTI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="top-bar">VOLT<span>TI</span></div>
-    
-    <div class="content">
-        <div class="category">
-            <h2>🎬 Filmes</h2>
-            <div id="movie-list" class="movie-row"></div>
-        </div>
+    <header class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="logo">VOLT<span>TI</span></div>
+        <div class="user-avatar">S</div>
+    </header>
+
+    <div id="side-menu" class="side-menu">
+        <div class="close-menu" onclick="toggleMenu()">✕</div>
+        <nav>
+            <a href="#" onclick="filter('filmes')">🎬 Filmes</a>
+            <a href="#" onclick="filter('series')">📺 Séries</a>
+            <a href="#" onclick="filter('doramas')">🎎 Doramas</a>
+            <hr style="border: 0.5px solid #222; margin: 20px 0;">
+            <a href="#" style="color: #666; font-size: 0.9rem;">Configurações</a>
+        </nav>
     </div>
 
+    <main class="content">
+        <section class="category">
+            <h2 id="cat-title">Filmes Populares</h2>
+            <div id="movie-grid" class="movie-grid"></div>
+        </section>
+    </main>
+
     <div id="video-overlay" class="video-overlay">
-        <button onclick="closeVid()" class="close-btn">✕ Voltar</button>
+        <div class="player-header">
+            <button onclick="closeVid()" class="back-btn">← Voltar</button>
+            <span id="playing-title"></span>
+        </div>
         <div id="player-wrap"></div>
     </div>
 
