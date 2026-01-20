@@ -9,7 +9,8 @@
 </head>
 <body>
     <header><div class="logo">VOLT<span>TI</span></div></header>
-    <main id="home-page" class="page active">
+
+    <div id="home-content">
         <div class="catalog">
             <h3>🎬 Filmes</h3>
             <div id="lista-filmes" class="scroll-row"></div>
@@ -22,14 +23,22 @@
             <h3>🎎 Doramas</h3>
             <div id="lista-doramas" class="scroll-row"></div>
         </div>
-    </main>
-    <div id="video-overlay" class="video-overlay">
-        <button onclick="closePlayer()" class="close-btn" style="position:absolute; top:20px; right:20px; background:rgba(0,0,0,0.5); color:white; border:none; width:40px; height:40px; border-radius:50%; cursor:pointer; z-index:100">✕</button>
-        <div class="player-wrapper" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;">
-            <h2 id="video-title" style="color:#00e5ff; margin-bottom:15px;"></h2>
-            <div id="player-container" style="width:90%; max-width:900px;"></div>
-        </div>
     </div>
+
+    <nav class="tab-bar">
+        <a href="#" class="tab-item active" onclick="showSection('home')"><i data-lucide="home"></i>Início</a>
+        <a href="#" class="tab-item" onclick="showSection('movies')"><i data-lucide="play-circle"></i>Filmes</a>
+        <a href="#" class="tab-item" onclick="showSection('series')"><i data-lucide="tv"></i>Séries</a>
+        <a href="#" class="tab-item" onclick="showSection('search')"><i data-lucide="search"></i>Busca</a>
+    </nav>
+
+    <div id="video-overlay" class="video-overlay">
+        <button onclick="closePlayer()" class="close-btn">✕</button>
+        <h2 id="video-title" style="text-align:center; margin-bottom:15px; font-size:1.1rem;"></h2>
+        <div id="player-container"></div>
+    </div>
+
     <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>

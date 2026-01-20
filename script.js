@@ -9,9 +9,10 @@ const VOLTTI_DATA = {
 function render() {
     const renderRow = (id, data) => {
         const el = document.getElementById(id);
-        if(el) el.innerHTML = data.map(i => `
-            <div class="movie-card" style="background-image: url('${i.capa}'); width:160px; height:240px; background-size:cover; border-radius:8px; flex-shrink:0; cursor:pointer;" onclick="openPlayer('${i.titulo}', '${i.url}')"></div>
-        `).join('');
+        if(!el) return;
+        el.innerHTML = data.length ? data.map(i => `
+            <div class="movie-card" style="background-image: url('${i.capa}')" onclick="openPlayer('${i.titulo}', '${i.url}')"></div>
+        `).join('') : '<p style="color:#555; font-size:0.8rem;">Em breve...</p>';
     };
     renderRow('lista-filmes', VOLTTI_DATA.filmes);
     renderRow('lista-series', VOLTTI_DATA.series);
@@ -21,7 +22,7 @@ function render() {
 function openPlayer(title, url) {
     document.getElementById('video-title').innerText = title;
     document.getElementById('player-container').innerHTML = `
-        <video controls autoplay style="width:100%; border-radius:12px; border:2px solid #00e5ff;">
+        <video controls autoplay style="width:100%;">
             <source src="${url}" type="video/mp4">
         </video>`;
     document.getElementById('video-overlay').classList.add('active');
