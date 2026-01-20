@@ -1,7 +1,8 @@
 let vltPlayer;
 
 const DB = {
-    filmes: [{ t: "A Culpa é das Estrelas", c: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", u: "http://motor.voltti.cloud/stream/6?hash=9555df" }]
+    filmes: [{ t: "A Culpa é das Estrelas", c: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", u: "http://motor.voltti.cloud/stream/6?hash=9555df" }],
+    series: []
 };
 
 function initApp() {
@@ -18,15 +19,8 @@ function initApp() {
 function openPlayer(title, url) {
     const overlay = document.getElementById('player-overlay');
     document.getElementById('v-title').innerText = title;
-    
-    // SÓ APARECE AGORA!
     overlay.style.display = 'flex';
-    
-    vltPlayer.source = {
-        type: 'video',
-        sources: [{ src: url, type: 'video/mp4' }]
-    };
-    
+    vltPlayer.source = { type: 'video', sources: [{ src: url, type: 'video/mp4' }] };
     vltPlayer.play();
 }
 
