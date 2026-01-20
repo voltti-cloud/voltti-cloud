@@ -2,12 +2,12 @@ const DB = {
     filmes: [
         { 
             t: "A Culpa é das Estrelas", 
-            i: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", 
+            i: "https://lh3.googleusercontent.com/u/0/d/1xkA2xCy76G8P0O7vEt4lBkeU9DklDak1", 
             u: "https://motor.voltti.cloud/stream/7?hash=52d003" 
         },
         { 
-            t: "Uma Noite no Museu", 
-            i: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/v9Qp8A058R5R0oP0vLpA6IunY2R.jpg", 
+            t: "Uma Noite no Museu 1", 
+            i: "https://lh3.googleusercontent.com/u/0/d/12DPh9Ck0vDK0y-wsghKgO0V5ALOjPERz", 
             u: "https://motor.voltti.cloud/stream/8?hash=b328e3" 
         }
     ],
@@ -23,11 +23,13 @@ function render(cat = 'filmes') {
     const data = DB[cat] || [];
     document.getElementById('cat-title').innerText = cat;
     
-    // Aqui forçamos a imagem a aparecer ou mostrar um erro no console
     grid.innerHTML = data.map(f => `
         <div class="card" 
-             style="background-image: url('${f.i}'); background-color: #222;" 
+             style="background-image: url('${f.i}'); background-color: #111; position: relative; background-size: cover; background-position: center;" 
              onclick="play('${f.t}', '${f.u}')">
+             <div style="position: absolute; bottom: 0; background: rgba(0,0,0,0.8); width: 100%; padding: 8px; font-size: 11px; text-align: center; border-radius: 0 0 8px 8px;">
+                ${f.t}
+             </div>
         </div>
     `).join('');
 }
