@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VOLTTI CLOUD</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <section id="player-section">
-        <div class="v-container" id="video-target"></div>
-        <div class="v-meta">
-            <h2 id="v-title">Título do Filme</h2>
-            <button class="close-btn" onclick="closePlayer()">FECHAR PLAYER</button>
+    <div id="player-overlay">
+        <div class="player-header">
+            <h2 id="v-title"></h2>
+            <button class="btn-close" onclick="closePlayer()">FECHAR X</button>
         </div>
-    </section>
+        <div class="video-wrapper">
+            <video id="player" playsinline controls>
+                <source src="" type="video/mp4" />
+            </video>
+        </div>
+    </div>
 
-    <header id="main-header"><div class="logo">VOLT<span>TI</span></div></header>
-
-    <main id="content-main">
-        <div class="catalog"><h3>🎬 Filmes Adicionados</h3><div id="list-movies" class="scroll-row"></div></div>
-        <div class="catalog"><h3>📺 Séries</h3><div id="list-series" class="scroll-row"></div></div>
+    <header><div class="logo">VOLT<span>TI</span></div></header>
+    <main>
+        <div class="catalog"><h3>🎬 Filmes</h3><div id="list-movies" class="scroll-row"></div></div>
     </main>
-
     <nav class="tab-bar">
         <a href="#" class="tab-item active"><i data-lucide="home"></i>Início</a>
-        <a href="#" class="tab-item"><i data-lucide="play-circle"></i>Filmes</a>
         <a href="#" class="tab-item"><i data-lucide="tv"></i>Séries</a>
     </nav>
 
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
     <script src="script.js"></script>
     <script>lucide.createIcons();</script>
 </body>
