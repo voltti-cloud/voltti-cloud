@@ -15,11 +15,17 @@ function render() {
 
 function openPlayer(title, url) {
     document.getElementById('video-title').innerText = title;
+    // Removi o 'autoplay' para o navegador não bloquear o áudio
     document.getElementById('player-container').innerHTML = `
-        <video controls autoplay>
+        <video id="main-video" controls style="width:100%; border-radius:10px;">
             <source src="${url}" type="video/mp4">
+            Seu navegador não suporta o player.
         </video>`;
     document.getElementById('video-overlay').classList.add('active');
+    
+    // Tenta dar play com som após interação
+    const v = document.getElementById('main-video');
+    v.volume = 1.0; 
 }
 
 function closePlayer() {
