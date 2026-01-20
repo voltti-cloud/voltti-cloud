@@ -3,48 +3,41 @@
     --surface: #16161a;
     --accent: #00e5ff;
     --text: #ffffff;
-    --text-dim: #a0a0a0;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
 
-body { background: var(--bg); color: var(--text); overflow-x: hidden; padding-bottom: 70px; }
+body { background: var(--bg); color: var(--text); padding-bottom: 80px; overflow-x: hidden; }
 
-header { padding: 15px; display: flex; justify-content: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); position: sticky; top: 0; z-index: 100; }
-.logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; }
+header { 
+    height: 60px; display: flex; align-items: center; justify-content: center; 
+    background: var(--surface); border-bottom: 1px solid #333;
+}
+.logo { font-weight: bold; font-size: 1.4rem; letter-spacing: 2px; }
 .logo span { color: var(--accent); }
 
 .catalog { padding: 20px 0 0 15px; }
-.catalog h3 { font-size: 1.1rem; margin-bottom: 15px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+.catalog h3 { font-size: 0.9rem; margin-bottom: 15px; color: #888; text-transform: uppercase; }
 
-.scroll-row { display: flex; overflow-x: auto; gap: 12px; padding-right: 15px; scrollbar-width: none; }
+.scroll-row { display: flex; overflow-x: auto; gap: 12px; padding-right: 15px; }
 .scroll-row::-webkit-scrollbar { display: none; }
 
 .movie-card {
-    min-width: 130px; height: 190px;
-    background-size: cover; background-position: center;
-    border-radius: 10px; flex-shrink: 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: transform 0.2s;
+    min-width: 120px; height: 180px; background-size: cover; 
+    border-radius: 8px; flex-shrink: 0; background-position: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
-.movie-card:active { transform: scale(0.95); }
 
-/* Menu de Baixo (Premium Tab Bar) */
+/* Tab Bar Mobile */
 .tab-bar {
     position: fixed; bottom: 0; width: 100%; height: 65px;
-    background: rgba(22, 22, 26, 0.95); backdrop-filter: blur(10px);
-    display: flex; justify-content: space-around; align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.05); z-index: 1000;
+    background: var(--surface); display: flex; justify-content: space-around;
+    align-items: center; border-top: 1px solid #333; z-index: 1000;
 }
-.tab-item { display: flex; flex-direction: column; align-items: center; color: var(--text-dim); font-size: 0.7rem; text-decoration: none; }
+.tab-item { color: #888; text-decoration: none; font-size: 0.7rem; text-align: center; }
+.tab-item i { display: block; font-size: 1.2rem; margin-bottom: 3px; }
 .tab-item.active { color: var(--accent); }
-.tab-item i { font-size: 1.4rem; margin-bottom: 4px; }
 
-/* Player Overlay */
-.video-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: #000; display: none; z-index: 2000;
-    flex-direction: column; justify-content: center;
-}
-.video-overlay.active { display: flex; }
-.close-btn { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 2rem; background: none; border: none; }
+/* Player Box */
+#player-container { display: none; width: 100%; background: #000; position: sticky; top: 0; z-index: 2000; }
+.video-js { width: 100% !important; height: auto !important; aspect-ratio: 16/9; }
