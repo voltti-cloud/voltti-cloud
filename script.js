@@ -5,22 +5,22 @@ const DB = {
 };
 
 function initApp() {
-    // Renderiza as capas
     const list = document.getElementById('list-movies');
     if(list) list.innerHTML = DB.filmes.map(i => `
         <div class="movie-card" style="background-image: url('${i.c}')" onclick="openPlayer('${i.t}', '${i.u}')"></div>
     `).join('');
 
-    // Inicializa o Player Premium
     vltPlayer = new Plyr('#player', {
-        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
-        tooltips: { controls: true, seek: true }
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen']
     });
 }
 
 function openPlayer(title, url) {
+    const overlay = document.getElementById('player-overlay');
     document.getElementById('v-title').innerText = title;
-    document.getElementById('player-overlay').style.display = 'flex';
+    
+    // SÓ APARECE AGORA!
+    overlay.style.display = 'flex';
     
     vltPlayer.source = {
         type: 'video',
