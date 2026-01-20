@@ -3,40 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VOLTTI CLOUD</title>
+    <title>VOLTTI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="main-header">
+    <header class="header">
         <div class="logo">VOLT<span>TI</span></div>
     </header>
 
-    <main id="app">
-        <h2 id="section-title">Filmes</h2>
-        <div id="grid-content" class="grid-container"></div>
+    <main class="container">
+        <h2 id="view-title">Filmes</h2>
+        <div id="grid" class="grid"></div>
     </main>
 
-    <nav class="bottom-nav">
-        <div class="nav-item active" onclick="changeTab('filmes', this)">
-            <span class="icon">🎬</span>
-            <span class="label">Filmes</span>
+    <nav class="tabbar">
+        <div class="tab-item active" onclick="tab('filmes', this)">
+            <span class="tab-icon">🎬</span>
+            <span class="tab-label">Filmes</span>
         </div>
-        <div class="nav-item" onclick="changeTab('series', this)">
-            <span class="icon">📺</span>
-            <span class="label">Séries</span>
+        <div class="tab-item" onclick="tab('series', this)">
+            <span class="tab-icon">📺</span>
+            <span class="tab-label">Séries</span>
         </div>
-        <div class="nav-item" onclick="changeTab('doramas', this)">
-            <span class="icon">🎎</span>
-            <span class="label">Doramas</span>
+        <div class="tab-item" onclick="tab('doramas', this)">
+            <span class="tab-icon">🎎</span>
+            <span class="tab-label">Doramas</span>
         </div>
     </nav>
 
-    <div id="player-view" class="player-view">
-        <div class="player-header">
-            <button class="close-btn" onclick="closePlayer()">✕</button>
-            <span id="player-title"></span>
+    <div id="player" class="player">
+        <div class="player-nav">
+            <button onclick="closeP()">✕ Voltar</button>
+            <b id="p-title"></b>
         </div>
-        <div id="video-container"></div>
+        <div id="p-cont" class="p-cont"></div>
     </div>
 
     <script src="script.js"></script>
