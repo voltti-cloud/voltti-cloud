@@ -1,27 +1,21 @@
-:root { --main-blue: #00e5ff; --bg-dark: #080808; }
-body { background: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow-x: hidden; }
-header { padding: 20px 5%; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
-.logo { font-size: 2.2rem; font-weight: 800; color: white; }
-.logo span { color: var(--main-blue); text-shadow: 0 0 15px var(--main-blue); }
+body { background: #080808; color: white; font-family: sans-serif; margin: 0; padding: 0; }
+header { padding: 20px 5%; background: #000; }
+.logo { font-size: 2rem; font-weight: bold; }
+.logo span { color: #00e5ff; }
 .catalog { padding: 20px 5%; }
-h3 { font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid var(--main-blue); padding-left: 15px; }
-.scroll-row { display: flex; gap: 20px; overflow-x: auto; padding: 15px 5px; scrollbar-width: none; }
-.scroll-row::-webkit-scrollbar { display: none; }
+.scroll-row { display: flex; gap: 15px; overflow-x: auto; padding: 20px 0; }
 .movie-card { 
-    width: 180px; height: 270px; background-size: cover; background-position: center;
-    border-radius: 12px; flex-shrink: 0; cursor: pointer; transition: 0.4s;
-    border: 2px solid transparent; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    width: 160px; height: 240px; background-size: cover; border-radius: 8px; 
+    cursor: pointer; flex-shrink: 0; border: 2px solid transparent; transition: 0.3s;
 }
-.movie-card:hover { transform: scale(1.1); border-color: var(--main-blue); }
+.movie-card:hover { transform: scale(1.05); border-color: #00e5ff; }
+
+/* Overlay Corrigido: Só aparece quando clicar */
 .video-overlay { 
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.98); z-index: 9999; justify-content: center; align-items: center;
+    background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; 
 }
 .video-overlay.active { display: flex; }
-.player-wrapper { width: 90%; max-width: 1000px; text-align: center; }
-#video-title { margin-bottom: 20px; color: var(--main-blue); }
-.close-btn { 
-    position: absolute; top: 30px; right: 30px; background: var(--main-blue); color: black; 
-    border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; font-weight: bold;
-}
-video { width: 100%; border-radius: 15px; box-shadow: 0 0 40px rgba(0, 229, 255, 0.3); }
+.player-wrapper { width: 90%; max-width: 900px; text-align: center; }
+.close-btn { position: absolute; top: 20px; right: 20px; padding: 10px 20px; background: #00e5ff; border: none; cursor: pointer; font-weight: bold; border-radius: 5px; }
+video { width: 100%; border: 2px solid #00e5ff; border-radius: 10px; }

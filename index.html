@@ -2,32 +2,22 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header><div class="logo">VOLT<span>TI</span></div></header>
     
-    <main class="page active">
-        <div class="catalog">
-            <h3>🎬 Filmes</h3>
-            <div id="lista-filmes" class="scroll-row"></div>
-        </div>
-        <div class="catalog">
-            <h3>📺 Séries</h3>
-            <div id="lista-series" class="scroll-row"></div>
-        </div>
-        <div class="catalog">
-            <h3>🎎 Doramas</h3>
-            <div id="lista-doramas" class="scroll-row"></div>
-        </div>
-    </main>
+    <div class="catalog">
+        <h3>🎬 Filmes</h3>
+        <div id="lista-filmes" class="scroll-row"></div>
+    </div>
 
     <div id="video-overlay" class="video-overlay">
-        <button onclick="closePlayer()" class="close-btn">✕</button>
+        <button onclick="closePlayer()" class="close-btn">✕ Fechar</button>
         <div class="player-wrapper">
-            <h2 id="video-title"></h2>
+            <h2 id="video-title" style="color: #00e5ff; margin-bottom: 20px;"></h2>
             <div id="player-container"></div>
         </div>
     </div>
