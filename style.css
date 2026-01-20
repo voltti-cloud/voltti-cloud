@@ -1,34 +1,27 @@
-:root { --accent: #00e5ff; --bg: #050505; --glass: rgba(255, 255, 255, 0.05); }
-* { box-sizing: border-box; outline: none; }
-body { background: var(--bg); color: white; font-family: 'Clash Display', sans-serif; margin: 0; height: 100vh; overflow: hidden; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background: #000; color: #fff; font-family: sans-serif; margin: 0; padding-top: 110px; }
 
-.app-container { display: flex; height: 100vh; }
+/* Header e Tabs fixas para não bugar no scroll */
+.top-nav { position: fixed; top: 0; width: 100%; height: 60px; background: #000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 10; }
+.logo { font-weight: bold; font-size: 1.5rem; color: #00e5ff; letter-spacing: 1px; }
+.user-icon { background: #333; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
 
-/* Menu Lateral */
-.side-menu { width: 80px; background: rgba(10, 10, 10, 0.8); border-right: 1px solid var(--glass); display: flex; flex-direction: column; align-items: center; padding: 20px 0; backdrop-filter: blur(10px); }
-.logo { font-size: 1.5rem; font-weight: bold; margin-bottom: 50px; color: var(--accent); }
-.logo span { color: white; }
-.menu-items .item { font-size: 1.5rem; margin: 30px 0; cursor: pointer; opacity: 0.5; transition: 0.3s; }
-.menu-items .item.active, .menu-items .item:hover { opacity: 1; transform: scale(1.2); color: var(--accent); }
+.tabs { position: fixed; top: 60px; width: 100%; height: 50px; background: #000; display: flex; align-items: center; gap: 20px; padding: 0 20px; z-index: 10; border-bottom: 1px solid #111; }
+.tab-btn { background: none; border: none; color: #888; font-size: 1rem; padding: 5px 0; cursor: pointer; }
+.tab-btn.active { color: #fff; border-bottom: 2px solid #00e5ff; }
 
-/* Conteúdo */
-.content { flex: 1; padding: 40px; overflow-y: auto; scroll-behavior: smooth; }
-h1 { font-size: 2.5rem; margin-bottom: 40px; }
-h1 span { color: var(--accent); font-weight: 300; }
+/* Grid de Filmes - Otimizado para Mobile */
+.grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; }
+.movie-card { width: 100%; aspect-ratio: 2/3; background-size: cover; background-position: center; border-radius: 6px; background-color: #111; }
 
-/* Player Integrado */
-.player-section { display: none; margin-bottom: 40px; background: var(--glass); border-radius: 20px; padding: 20px; border: 1px solid var(--glass); animation: fadeIn 0.5s ease; }
-.player-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-.btn-close { background: var(--accent); border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-video { width: 100%; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+/* Player View - Tela cheia instantânea */
+.player-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; flex-direction: column; }
+.player-top { padding: 15px; display: flex; align-items: center; gap: 15px; background: linear-gradient(to bottom, #000, transparent); }
+.back-btn { background: #00e5ff; border: none; border-radius: 4px; padding: 5px 12px; font-weight: bold; }
+#video-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; }
+video { width: 100%; max-height: 80vh; background: #000; }
 
-/* Grade de Cards */
-.movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 25px; }
-.card { position: relative; border-radius: 15px; overflow: hidden; cursor: pointer; transition: 0.4s; aspect-ratio: 2/3; border: 1px solid var(--glass); }
-.card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2); }
-.card:hover img { transform: scale(1.1); filter: brightness(0.5); }
-.card-info { position: absolute; bottom: 0; padding: 15px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); width: 100%; opacity: 0; transition: 0.3s; }
-.card:hover .card-info { opacity: 1; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+/* Tablets e PCs */
+@media (min-width: 768px) {
+    .grid-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}

@@ -2,38 +2,34 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOLTTI | Premium Stream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>VOLTTI</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <nav class="side-menu">
-            <div class="logo">V<span>O</span></div>
-            <div class="menu-items">
-                <div class="item active" onclick="showCategory('filmes')">🎬</div>
-                <div class="item" onclick="showCategory('series')">📺</div>
-                <div class="item" onclick="showCategory('doramas')">🎎</div>
-            </div>
-        </nav>
+    <nav class="top-nav">
+        <div class="logo">VOLTTI</div>
+        <div class="user-icon">S</div>
+    </nav>
 
-        <main class="content">
-            <header>
-                <h1 id="category-title">Filmes <span>Premium</span></h1>
-            </header>
-
-            <section id="player-section" class="player-section">
-                <div class="player-header">
-                    <h2 id="now-playing">Selecione um título</h2>
-                    <button onclick="closePlayer()" class="btn-close">Fechar</button>
-                </div>
-                <div id="video-dest" class="video-dest"></div>
-            </section>
-
-            <div id="grid-content" class="movie-grid"></div>
-        </main>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="changeTab('filmes', this)">Filmes</button>
+        <button class="tab-btn" onclick="changeTab('series', this)">Séries</button>
+        <button class="tab-btn" onclick="changeTab('doramas', this)">Doramas</button>
     </div>
+
+    <main id="app">
+        <div id="grid-content" class="grid-container"></div>
+    </main>
+
+    <div id="player-view" class="player-view">
+        <div class="player-top">
+            <button class="back-btn" onclick="closePlayer()">← Voltar</button>
+            <span id="player-title"></span>
+        </div>
+        <div id="video-wrapper"></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
