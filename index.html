@@ -3,26 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOLTTI CLOUD</title>
+    <title>VOLTTI | Premium Stream</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header><div class="logo">VOLT<span>TI</span></div></header>
-    
-    <div class="catalog">
-        <h3>🎬 Filmes para Sandy</h3>
-        <div id="lista-filmes" class="scroll-row" style="display: flex; gap: 15px; overflow-x: auto; min-height: 250px;">
+    <div class="app-container">
+        <nav class="side-menu">
+            <div class="logo">V<span>O</span></div>
+            <div class="menu-items">
+                <div class="item active" onclick="showCategory('filmes')">🎬</div>
+                <div class="item" onclick="showCategory('series')">📺</div>
+                <div class="item" onclick="showCategory('doramas')">🎎</div>
             </div>
-    </div>
+        </nav>
 
-    <div id="video-overlay" class="video-overlay">
-        <button onclick="closePlayer()" class="close-btn">✕ Fechar</button>
-        <div class="player-wrapper">
-            <h2 id="video-title" style="color: #00e5ff;"></h2>
-            <div id="player-container"></div>
-        </div>
-    </div>
+        <main class="content">
+            <header>
+                <h1 id="category-title">Filmes <span>Premium</span></h1>
+            </header>
 
-    <script src="script.js?v=1.2"></script>
+            <section id="player-section" class="player-section">
+                <div class="player-header">
+                    <h2 id="now-playing">Selecione um título</h2>
+                    <button onclick="closePlayer()" class="btn-close">Fechar</button>
+                </div>
+                <div id="video-dest" class="video-dest"></div>
+            </section>
+
+            <div id="grid-content" class="movie-grid"></div>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

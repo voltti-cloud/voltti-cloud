@@ -1,40 +1,46 @@
-const filmes = [
-    { 
-        titulo: "A Culpa é das Estrelas", 
-        capa: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", 
-        url: "https://motor.voltti.cloud/stream/7?hash=52d003" 
-    },
-    { 
-        titulo: "Uma Noite no Museu", 
-        capa: "https://image.tmdb.org/t/p/w500/v9Qp8A058R5R0oP0vLpA6IunY2R.jpg", 
-        url: "https://motor.voltti.cloud/stream/8?hash=b328e3" 
-    }
-];
+const DATA = {
+    filmes: [
+        { t: "A Culpa é das Estrelas", c: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", u: "https://motor.voltti.cloud/stream/7?hash=52d003" },
+        { t: "Uma Noite no Museu", c: "https://image.tmdb.org/t/p/w500/v9Qp8A058R5R0oP0vLpA6IunY2R.jpg", u: "https://motor.voltti.cloud/stream/8?hash=b328e3" }
+    ],
+    series: [],
+    doramas: []
+};
 
-function render() {
-    const container = document.getElementById('lista-filmes');
-    if (!container) return;
-    
-    container.innerHTML = filmes.map(f => `
-        <div class="movie-card" 
-             style="background-image: url('${f.capa}'); width: 160px; height: 240px; background-size: cover; border-radius: 10px; flex-shrink: 0; cursor: pointer; border: 2px solid #333;" 
-             onclick="openPlayer('${f.titulo}', '${f.url}')">
+function render(cat = 'filmes') {
+    const grid = document.getElementById('grid-content');
+    grid.innerHTML = DATA[cat].map(i => `
+        <div class="card" onclick="play('${i.t}', '${i.u}')">
+            <img src="${i.c}" alt="${i.t}">
+            <div class="card-info"><div>${i.t}</div></div>
         </div>
     `).join('');
 }
 
-function openPlayer(title, url) {
-    document.getElementById('video-title').innerText = title;
-    document.getElementById('player-container').innerHTML = `
-        <video id="main-video" controls autoplay style="width:100%; border-radius:10px;">
+function play(title, url) {
+    const section = document.getElementById('player-section');
+    const dest = document.getElementById('video-dest');
+    document.getElementById('now-playing').innerText = title;
+    
+    section.style.display = 'block';
+    dest.innerHTML = `
+        <video id="v-main" controls autoplay>
             <source src="${url}" type="video/mp4">
         </video>`;
-    document.getElementById('video-overlay').classList.add('active');
+    
+    window.scrollTo(0, 0);
 }
 
 function closePlayer() {
-    document.getElementById('player-container').innerHTML = '';
-    document.getElementById('video-overlay').classList.remove('active');
+    document.getElementById('player-section').style.display = 'none';
+    document.getElementById('video-dest').innerHTML = '';
 }
 
-window.onload = render;
+function showCategory(cat) {
+    document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('category-title').innerHTML = cat.charAt(0).toUpperCase() + cat.slice(1) + ' <span>Premium</span>';
+    render(cat);
+}
+
+window.onload = () => render();
