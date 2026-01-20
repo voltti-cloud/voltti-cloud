@@ -5,31 +5,26 @@ const DB = {
 
 function render() {
     const movies = document.getElementById('list-movies');
-    if(movies) movies.innerHTML = DB.filmes.map(i => `<div class="movie-card" style="background-image: url('${i.c}')" onclick="playMovie('${i.t}', '${i.u}')"></div>`).join('');
+    if(movies) {
+        movies.innerHTML = DB.filmes.map(i => `
+            <div class="movie-card" style="background-image: url('${i.c}')" onclick="playMovie('${i.t}', '${i.u}')"></div>
+        `).join('');
+    }
 }
 
 function playMovie(title, url) {
     const section = document.getElementById('player-section');
     const target = document.getElementById('video-target');
-    const header = document.getElementById('main-header');
-
     document.getElementById('v-title').innerText = title;
     
-    // Injeta o vídeo SEM FREIO e SEM ERRO
     target.innerHTML = `<video id="v-play" controls autoplay playsinline><source src="${url}" type="video/mp4"></video>`;
-    
     section.style.display = 'block';
-    header.style.display = 'none';
-    
-    const v = document.getElementById('v-play');
-    v.volume = 1.0;
-    
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
 }
 
 function closePlayer() {
     document.getElementById('player-section').style.display = 'none';
-    document.getElementById('main-header').style.display = 'flex';
     document.getElementById('video-target').innerHTML = '';
+    document.body.style.overflow = 'auto'; // Destrava o scroll
 }
 window.onload = render;
