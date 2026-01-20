@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <link rel="stylesheet" href="style.css">
@@ -11,19 +12,25 @@
 <body>
     <div id="player-overlay">
         <div class="player-header">
-            <h2 id="v-title"></h2>
-            <button class="btn-close" onclick="closePlayer()">FECHAR</button>
+            <h2 id="v-title">Carregando...</h2>
+            <button class="btn-close" onclick="closePlayer()">FECHAR X</button>
         </div>
         <div class="video-container">
-            <video id="player" playsinline controls></video>
+            <video id="player" playsinline controls crossorigin></video>
         </div>
     </div>
 
     <header><div class="logo">VOLT<span>TI</span></div></header>
     
     <main>
-        <div class="catalog"><h3>🎬 Filmes</h3><div id="list-movies" class="scroll-row"></div></div>
-        <div class="catalog"><h3>📺 Séries</h3><div id="list-series" class="scroll-row"></div></div>
+        <div class="catalog">
+            <h3>🎬 Filmes Adicionados</h3>
+            <div id="list-movies" class="scroll-row"></div>
+        </div>
+        <div class="catalog">
+            <h3>📺 Séries</h3>
+            <div id="list-series" class="scroll-row"></div>
+        </div>
     </main>
 
     <nav class="tab-bar">
