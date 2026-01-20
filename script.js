@@ -1,45 +1,49 @@
+// Inicializa o Player Premium
+const player = new Plyr('#player', {
+    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+    tooltips: { controls: true, seek: true }
+});
+
 const VOLTTI_DATA = {
     filmes: [
         { titulo: "A Culpa é das Estrelas", capa: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", url: "http://motor.voltti.cloud/stream/6?hash=9555df" }
     ],
-    series: [],
-    doramas: []
+    series: []
 };
 
 function render() {
     const renderRow = (id, data) => {
         const el = document.getElementById(id);
         if(!el) return;
-        el.innerHTML = data.length ? data.map(i => `
-            <div class="movie-card" style="background-image: url('${i.capa}')" onclick="playEmbutido('${i.titulo}', '${i.url}')"></div>
-        `).join('') : '<p style="color:#555; padding-left:15px;">Em breve...</p>';
+        el.innerHTML = data.map(i => `
+            <div class="movie-card" style="background-image: url('${i.capa}')" onclick="startMovie('${i.titulo}', '${i.url}')"></div>
+        `).join('');
     };
     renderRow('lista-filmes', VOLTTI_DATA.filmes);
     renderRow('lista-series', VOLTTI_DATA.series);
-    renderRow('lista-doramas', VOLTTI_DATA.doramas);
 }
 
-function playEmbutido(title, url) {
-    const videoSection = document.getElementById('video-section');
-    const playerTarget = document.getElementById('player-target');
-    
+function startMovie(title, url) {
+    const wrapper = document.getElementById('player-wrapper');
     document.getElementById('current-title').innerText = title;
     
-    // Mostra a seção primeiro
-    videoSection.style.display = 'block';
+    // Troca a fonte do vídeo e dá play
+    player.source = {
+        type: 'video',
+        title: title,
+        sources: [{ src: url, type: 'video/mp4' }]
+    };
     
-    // Injeta o player
-    playerTarget.innerHTML = `
-        <video controls autoplay playsinline>
-            <source src="${url}" type="video/mp4">
-        </video>`;
-    
+    wrapper.style.display = 'block';
+    document.getElementById('main-header').style.display = 'none';
+    player.play();
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function closePlayer() {
-    document.getElementById('video-section').style.display = 'none';
-    document.getElementById('player-target').innerHTML = '';
+    player.pause();
+    document.getElementById('player-wrapper').style.display = 'none';
+    document.getElementById('main-header').style.display = 'flex';
 }
 
 window.onload = render;
