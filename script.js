@@ -11,9 +11,9 @@ const DB = {
     filmes: [{ 
         t: "A Culpa é das Estrelas", 
         c: "https://image.tmdb.org/t/p/w500/uDsv9LkwN6EH3SBFQDE3uHJyvY6.jpg", 
-        // Usando um serviço de proxy para converter HTTP em HTTPS e o navegador aceitar
-        u: "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=604800&url=http://motor.voltti.cloud/stream/6?hash=9555df"
-    }]
+        u: "http://motor.voltti.cloud/stream/6?hash=9555df" 
+    }],
+    series: []
 };
 
 function render() {
@@ -31,21 +31,25 @@ function openPlayer(title, url) {
     document.getElementById('v-title').innerText = title;
     overlay.style.display = 'flex';
 
+    // Se estiver no celular, usamos o proxy para garantir que o HTTPS não bloqueie o vídeo
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    let finalUrl = url;
+    
+    if (isMobile) {
+        // Proxy específico para mobile rodar link http em site https
+        finalUrl = "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=604800&url=" + encodeURIComponent(url);
+    }
+
     vltPlayer.source = {
         type: 'video',
-        sources: [{ src: url, type: 'video/mp4' }]
+        sources: [{ src: finalUrl, type: 'video/mp4' }]
     };
 
     setTimeout(() => {
         vltPlayer.play().catch(e => {
-            console.log("Erro no play:", e);
-            // Se o proxy falhar, tentamos o link direto como última alternativa
-            if(url.includes("googleusercontent")) {
-                console.log("Tentando link direto...");
-                openPlayer(title, "http://motor.voltti.cloud/stream/6?hash=9555df");
-            }
+            console.log("Play pendente...");
         });
-    }, 500);
+    }, 800);
 }
 
 function closePlayer() {
