@@ -11,7 +11,7 @@ function render() {
         const el = document.getElementById(id);
         if(!el) return;
         el.innerHTML = data.length ? data.map(i => `
-            <div class="movie-card" style="background-image: url('${i.capa}')" onclick="openPlayer('${i.titulo}', '${i.url}')"></div>
+            <div class="movie-card" style="background-image: url('${i.capa}')" onclick="playEmbutido('${i.titulo}', '${i.url}')"></div>
         `).join('') : '<p style="color:#555; font-size:0.8rem; padding-left:15px;">Em breve...</p>';
     };
     renderRow('lista-filmes', VOLTTI_DATA.filmes);
@@ -19,26 +19,31 @@ function render() {
     renderRow('lista-doramas', VOLTTI_DATA.doramas);
 }
 
-function openPlayer(title, url) {
-    document.getElementById('video-title').innerText = title;
-    // Adicionei playsinline e mudei a forma de carregar para garantir o áudio no mobile
-    const container = document.getElementById('player-container');
-    container.innerHTML = `
-        <video id="main-video" controls autoplay playsinline style="width:100%; border-radius:8px; background:#000;">
+function playEmbutido(title, url) {
+    const videoSection = document.getElementById('video-section');
+    const playerTarget = document.getElementById('player-target');
+    const header = document.getElementById('main-header');
+    
+    document.getElementById('current-title').innerText = title;
+    
+    // Injeta o player com flags de áudio forçadas
+    playerTarget.innerHTML = `
+        <video id="vlt-video" controls autoplay playsinline webkit-playsinline>
             <source src="${url}" type="video/mp4">
-            Seu navegador não suporta o áudio/vídeo da VOLTTI.
         </video>`;
     
-    const video = document.getElementById('main-video');
-    video.volume = 1.0; // Força o volume no máximo ao iniciar
+    const v = document.getElementById('vlt-video');
+    v.volume = 1.0;
     
-    document.getElementById('video-overlay').classList.add('active');
+    videoSection.style.display = 'block';
+    header.style.display = 'none'; // Esconde o logo para focar no vídeo
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function closePlayer() {
-    const container = document.getElementById('player-container');
-    container.innerHTML = ''; 
-    document.getElementById('video-overlay').classList.remove('active');
+    document.getElementById('video-section').style.display = 'none';
+    document.getElementById('main-header').style.display = 'flex';
+    document.getElementById('player-target').innerHTML = '';
 }
 
 window.onload = render;
