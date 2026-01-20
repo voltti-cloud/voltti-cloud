@@ -2,12 +2,12 @@ const DB = {
     filmes: [
         { 
             t: "A Culpa é das Estrelas", 
-            i: "https://lh3.googleusercontent.com/u/0/d/1xkA2xCy76G8P0O7vEt4lBkeU9DklDak1", 
+            i: "capa1.webp", 
             u: "https://motor.voltti.cloud/stream/7?hash=52d003" 
         },
         { 
             t: "Uma Noite no Museu 1", 
-            i: "https://lh3.googleusercontent.com/u/0/d/12DPh9Ck0vDK0y-wsghKgO0V5ALOjPERz", 
+            i: "capa2.webp", 
             u: "https://motor.voltti.cloud/stream/8?hash=b328e3" 
         }
     ],
