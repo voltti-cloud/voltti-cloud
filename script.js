@@ -9,7 +9,7 @@ const DB = {
         { t: "Círculo de Fogo 2", i: "circulodefogo2.webp", u: "https://motor.voltti.cloud/stream/10?hash=3ca7e5" },
         { t: "5 Passos de Você", i: "5passos.webp", u: "https://motor.voltti.cloud/stream/12?hash=1e921d" },
         { t: "Eclipse", i: "eclipse.webp", u: "https://motor.voltti.cloud/stream/20?hash=4d8896" },
-        { t: "Amanhecer Parte 1", i: "amanhecer1.webp", u: "" },
+        { t: "Amanhecer Parte 1", i: "amanhecer1.webp", u: "https://motor.voltti.cloud/stream/22?hash=d297e2" },
         { t: "Amanhecer Parte 2", i: "amanhecer2.webp", u: "https://motor.voltti.cloud/stream/21?hash=a7a7fc" }
     ],
     series: [], doramas: []
@@ -26,7 +26,7 @@ function render(cat = 'filmes') {
 }
 
 function play(title, url) {
-    if(!url) { alert('Link de streaming não encontrado para este filme!'); return; }
+    if(!url) { alert('Link de streaming não encontrado!'); return; }
     document.getElementById('playing-title').innerText = title;
     document.getElementById('player-wrap').innerHTML = `
         <video controls autoplay style="width:100%; border-radius:8px;">
