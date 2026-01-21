@@ -60,7 +60,7 @@ function toggleSearch() {
 
 function play(t, u) {
     document.getElementById('playing-title').innerText = t;
-    document.getElementById('video-content').innerHTML = `<video controls autoplay src="${u}"></video>`;
+    document.getElementById('video-content').innerHTML = `<video controls autoplay src="${u}" style="width:100%"></video>`;
     document.getElementById('player-overlay').style.display = 'flex';
 }
 
