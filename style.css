@@ -111,3 +111,6 @@ header {
 
 .overlay-content { width: 95%; max-width: 800px; margin: auto; position: relative; }
 .close-overlay { position: absolute; top: -40px; right: 0; color: white; font-size: 30px; cursor: pointer; }
+.nav-item { transition: 0.3s; }
+.nav-item:hover { color: #00e5ff; transform: scale(1.1); }
+#cat-title { text-transform: uppercase; letter-spacing: 1px; color: #00e5ff; }
