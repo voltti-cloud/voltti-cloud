@@ -2,47 +2,51 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOLTTI CLOUD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VOLTTI | Mobile</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <header>
-        <div class="logo" onclick="window.location.reload()">VOLTTI<span>CLOUD</span></div>
-        <div class="header-icons">
-            <i class="fas fa-search" onclick="toggleSearch()"></i>
-            <i class="fas fa-user-circle" onclick="userStatus()"></i>
+        <div class="logo">VOLTTI</div>
+        <div class="header-right">
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
         </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="#" onclick="filtrar('todos')">Início</a></li>
+                <li><a href="#" onclick="filtrar('filme')">Filmes</a></li>
+                <li><a href="#" onclick="filtrar('serie')">Séries</a></li>
+                <li><a href="#" onclick="filtrar('dorama')">Doramas</a></li>
+                <li class="menu-destaque"><a href="pagar.html">ASSINAR MENSAL</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="search-bar" id="search-bar">
-        <input type="text" id="search-input" placeholder="Pesquisar filme..." onkeyup="search()">
-    </div>
-
-    <nav class="categories">
-        <div class="nav-btn active" onclick="filter('todos', this)">Tudo</div>
-        <div class="nav-btn" onclick="filter('acao', this)">Ação</div>
-        <div class="nav-btn" onclick="filter('romance', this)">Romance</div>
-        <div class="nav-btn" onclick="filter('ficcao', this)">Ficção</div>
-        <div class="nav-btn" onclick="filter('terror', this)">Terror</div>
-        <div class="nav-btn" onclick="filter('comedia', this)">Comédia</div>
-    </nav>
-
-    <main id="movie-grid" class="grid"></main>
+    <main class="main-content">
+        <section class="video-container">
+            <div class="player-wrapper">
+                <iframe id="main-player" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <h2 id="video-title">Seja bem-vindo à VOLTTI</h2>
+            <div id="lista-eps"></div>
+        </section>
+        <section class="catalog" id="movie-grid"></section>
+    </main>
 
     <footer>
-        <p>© 2026 Voltti Cloud - Mateus & Sandy</p>
+        <div class="footer-logo">VOLTTI<span>CLOUD</span></div>
+        <p style="color: #666; font-size: 0.8em;">Sua plataforma premium de entretenimento.</p>
+        <div class="footer-links">
+            <a href="https://wa.me/5598981296742" target="_blank">Suporte WhatsApp</a>
+        </div>
+        <p class="copyright">© 2026 VOLTTI CLOUD - Mateus & Sandy</p>
     </footer>
 
-    <div id="player-overlay" class="overlay">
-        <div class="player-container">
-            <span class="close-player" onclick="closeVid()">&times;</span>
-            <h3 id="playing-title"></h3>
-            <div id="video-content"></div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="script.js?v=60"></script>
 </body>
 </html>
