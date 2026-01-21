@@ -2,41 +2,48 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VOLTTI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltti Cloud | Premium Streaming</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="navbar">
+    <header>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="logo">VOLT<span>TI</span></div>
-        <div class="user-avatar">S</div>
+        <div class="logo">VOLTTI <span>CLOUD</span></div>
+        <div class="user-icon" style="color: #edbd0d; font-weight: bold; cursor: pointer;" onclick="filter('vip')">💎 VIP</div>
     </header>
 
-    <div id="side-menu" class="side-menu">
-        <div class="close-menu" onclick="toggleMenu()">✕</div>
-        <nav>
-            <a href="#" onclick="filter('filmes')">🎬 Filmes</a>
-            <a href="#" onclick="filter('series')">📺 Séries</a>
-            <a href="#" onclick="filter('doramas')">🎎 Doramas</a>
-            <hr style="border: 0.5px solid #222; margin: 20px 0;">
-            <a href="#" style="color: #666; font-size: 0.9rem;">Configurações</a>
-        </nav>
-    </div>
+    <nav id="side-menu">
+        <div class="close-btn" onclick="toggleMenu()">×</div>
+        <a href="#" onclick="filter('filmes')">🎬 Filmes</a>
+        <a href="#" onclick="filter('series')">📺 Séries</a>
+        <a href="#" onclick="filter('doramas')">🌸 Doramas</a>
+        <hr style="border: 0.5px solid #333; margin: 20px 0;">
+        <a href="https://t.me/seu_contato" target="_blank" style="color: #edbd0d;">💎 ASSINAR VIP</a>
+    </nav>
 
-    <main class="content">
-        <section class="category">
-            <h2 id="cat-title">Filmes Populares</h2>
-            <div id="movie-grid" class="movie-grid"></div>
-        </section>
+    <section class="hero" id="hero-banner">
+        <div class="hero-content">
+            <h1 id="hero-title">A Culpa é das Estrelas</h1>
+            <p id="hero-desc">Um romance emocionante que conquistou o mundo.</p>
+            <div class="hero-btns">
+                <button class="btn-play" onclick="playDefault()">▶ Assistir</button>
+                <button class="btn-info" onclick="filter('filmes')">ℹ Mais Info</button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <h2 id="cat-title">filmes</h2>
+        <div class="grid" id="movie-grid"></div>
     </main>
 
-    <div id="video-overlay" class="video-overlay">
-        <div class="player-header">
-            <button onclick="closeVid()" class="back-btn">← Voltar</button>
-            <span id="playing-title"></span>
+    <div id="video-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-overlay" onclick="closeVid()">×</span>
+            <h3 id="playing-title"></h3>
+            <div id="player-wrap"></div>
         </div>
-        <div id="player-wrap"></div>
     </div>
 
     <script src="script.js"></script>
