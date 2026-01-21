@@ -1,180 +1,26 @@
-:root {
-    --cyan: #00e5ff;
-    --bg: #050505;
-    --card-bg: #121212;
-}
+:root { --main: #00e5ff; --bg: #050505; --card: #111; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: #fff; font-family: sans-serif; }
 
-body {
-    background-color: var(--bg);
-    color: white;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    margin: 0;
-    padding-bottom: 30px;
-}
+header { display: flex; justify-content: space-between; padding: 20px; position: sticky; top: 0; background: rgba(5,5,5,0.9); backdrop-filter: blur(10px); z-index: 100; }
+.logo { font-weight: bold; font-size: 20px; cursor: pointer; }
+.logo span { color: var(--main); }
+.header-icons i { font-size: 20px; margin-left: 20px; cursor: pointer; }
 
-/* Header e Nav (Mantendo o que você gostou) */
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background: #000;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+.search-bar { display: none; padding: 10px 20px; }
+#search-input { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid var(--main); border-radius: 8px; color: white; }
 
-.nav-top {
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 0;
-    background: #000;
-    border-bottom: 1px solid #1a1a1a;
-}
+.categories { display: flex; gap: 10px; overflow-x: auto; padding: 15px 20px; scrollbar-width: none; }
+.nav-btn { background: #1a1a1a; padding: 8px 18px; border-radius: 20px; font-size: 13px; white-space: nowrap; cursor: pointer; border: 1px solid #333; }
+.nav-btn.active { background: var(--main); color: #000; font-weight: bold; }
 
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 10px;
-    color: #888;
-    cursor: pointer;
-}
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 15px; }
+.card { background: var(--card); border-radius: 8px; overflow: hidden; position: relative; aspect-ratio: 2/3; border: 1px solid #222; }
+.card img { width: 100%; height: 100%; object-fit: cover; }
+.card-info { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 8px 4px; text-align: center; font-size: 9px; }
 
-.nav-item.active { color: var(--cyan); }
-
-/* BANNER HERO (Ajustado) */
-.hero {
-    margin: 15px;
-    height: 180px;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.btn-assistir {
-    background: var(--cyan);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    font-size: 12px;
-}
-
-/* O CATÁLOGO ORGANIZADO (GRID) */
-.section-title {
-    font-size: 16px;
-    margin: 20px 15px 10px;
-    color: var(--cyan);
-    text-transform: uppercase;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 filmes por linha no celular */
-    gap: 12px;
-    padding: 0 15px;
-}
-
-.card {
-    position: relative;
-    background-color: var(--card-bg);
-    border-radius: 6px;
-    overflow: hidden;
-    aspect-ratio: 2 / 3; /* Mantém todas as capas na mesma proporção */
-    border: 1px solid #222;
-    transition: transform 0.2s;
-}
-
-.card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
-}
-
-.card-title {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
-    color: #fff;
-    font-size: 9px;
-    padding: 15px 5px 5px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Corta o nome se for muito grande */
-}
-
-/* Estilo do Menu Lateral */
-#side-menu {
-    position: fixed;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background: #000;
-    z-index: 2000;
-    transition: 0.3s;
-    top: 0;
-}
-#side-menu.active { left: 0; }
-
-/* Overlay do Player */
-.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 5000; justify-content: center; align-items: center; }
-
-/* AJUSTE DO MENU LATERAL */
-#side-menu {
-    padding-top: 60px;
-    display: flex;
-    flex-direction: column;
-}
-
-#side-menu .menu-title {
-    color: var(--cyan);
-    font-size: 14px;
-    padding: 10px 25px;
-    letter-spacing: 2px;
-    border-bottom: 1px solid #1a1a1a;
-    margin-bottom: 10px;
-}
-
-#side-menu a {
-    color: #fff;
-    padding: 15px 25px;
-    text-decoration: none;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    transition: 0.3s;
-}
-
-#side-menu a:hover {
-    background: #111;
-    color: var(--cyan);
-}
-
-#side-menu a i {
-    width: 20px;
-    text-align: center;
-    color: var(--cyan);
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-#side-menu hr {
-    border: 0;
-    border-top: 1px solid #1a1a1a;
-    margin: 10px 0;
-}
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; }
+.player-container { width: 95%; }
+video { width: 100%; border-radius: 8px; }
+.close-player { float: right; font-size: 30px; cursor: pointer; }
+footer { text-align: center; padding: 30px; font-size: 10px; color: #444; }

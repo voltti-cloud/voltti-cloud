@@ -9,45 +9,37 @@
 </head>
 <body>
     <header>
-        <i class="fas fa-bars" onclick="toggleMenu()" style="font-size: 22px; color: #00e5ff; cursor: pointer;"></i>
-        <span onclick="window.location.reload()" style="font-weight: bold; letter-spacing: 2px; color: #00e5ff; cursor: pointer;">VOLTTI</span>
-        <div class="header-right">
-            <input type="text" id="search-input" placeholder="Pesquisar..." onkeyup="search()" style="display:none;">
-            <i class="fas fa-search" onclick="toggleSearch()" id="search-icon"></i>
-            <i class="fas fa-user-circle" onclick="userStatus()" style="margin-left: 15px; cursor: pointer;"></i>
+        <div class="logo" onclick="window.location.reload()">VOLTTI<span>CLOUD</span></div>
+        <div class="header-icons">
+            <i class="fas fa-search" onclick="toggleSearch()"></i>
+            <i class="fas fa-user-circle" onclick="userStatus()"></i>
         </div>
     </header>
 
-    <nav id="side-menu">
-        <div class="close-btn" onclick="toggleMenu()">×</div>
-        <div class="menu-title">CATEGORIAS</div>
-        <a href="#" onclick="filterType('filme')"><i class="fas fa-film"></i> Filmes</a>
-        <a href="#" onclick="filterType('serie')"><i class="fas fa-tv"></i> Séries</a>
-        <a href="#" onclick="filterType('dorama')"><i class="fas fa-heart"></i> Doramas</a>
-        <hr style="border: 0.5px solid #222; margin: 20px;">
-        <a href="#" onclick="userStatus()" style="color: #edbd0d;"><i class="fas fa-gem"></i> Área VIP</a>
-    </nav>
-
-    <div class="nav-top">
-        <div class="nav-item" onclick="renderByGenre('todos')"><i class="fas fa-home"></i>Início</div>
-        <div class="nav-item" onclick="renderByGenre('acao')"><i class="fas fa-gun"></i>Ação</div>
-        <div class="nav-item" onclick="renderByGenre('romance')"><i class="fas fa-heart"></i>Romance</div>
-        <div class="nav-item" onclick="renderByGenre('ficcao')"><i class="fas fa-rocket"></i>Ficção</div>
-        <div class="nav-item" onclick="renderByGenre('terror')"><i class="fas fa-ghost"></i>Terror</div>
+    <div class="search-bar" id="search-bar">
+        <input type="text" id="search-input" placeholder="Pesquisar filme..." onkeyup="search()">
     </div>
 
-    <section class="hero" id="hero-banner" style="background-image: linear-gradient(transparent, rgba(0,0,0,0.9)), url('the_batman.webp');">
-        <button class="btn-assistir" onclick="play('The Batman', 'https://motor.voltti.cloud/stream/44?hash=24a8f1')">ASSISTIR AGORA</button>
-    </section>
+    <nav class="categories">
+        <div class="nav-btn active" onclick="filter('todos', this)">Tudo</div>
+        <div class="nav-btn" onclick="filter('acao', this)">Ação</div>
+        <div class="nav-btn" onclick="filter('romance', this)">Romance</div>
+        <div class="nav-btn" onclick="filter('ficcao', this)">Ficção</div>
+        <div class="nav-btn" onclick="filter('terror', this)">Terror</div>
+        <div class="nav-btn" onclick="filter('comedia', this)">Comédia</div>
+    </nav>
 
-    <h2 class="section-title" id="cat-title">MAIS POPULARES</h2>
-    <div class="grid" id="movie-grid"></div>
+    <main id="movie-grid" class="grid"></main>
 
-    <div id="video-overlay" class="overlay">
-        <div class="overlay-content">
-            <span class="close-overlay" onclick="closeVid()">×</span>
+    <footer>
+        <p>© 2026 Voltti Cloud - Mateus & Sandy</p>
+    </footer>
+
+    <div id="player-overlay" class="overlay">
+        <div class="player-container">
+            <span class="close-player" onclick="closeVid()">&times;</span>
             <h3 id="playing-title"></h3>
-            <div id="player-wrap"></div>
+            <div id="video-content"></div>
         </div>
     </div>
 
