@@ -3,45 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voltti Cloud | Premium Streaming</title>
+    <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="logo">VOLTTI <span>CLOUD</span></div>
-        <div class="user-icon" style="color: #edbd0d; font-weight: bold; cursor: pointer;" onclick="filter('vip')">💎 VIP</div>
+        <i class="fas fa-bars" onclick="toggleMenu()" style="font-size: 20px; color: #00e5ff; cursor: pointer;"></i>
+        <span style="font-weight: bold; letter-spacing: 2px; color: #00e5ff;">VOLTTI</span>
+        <div>
+            <i class="fas fa-search" style="margin-right: 15px;"></i>
+            <i class="fas fa-user-circle"></i>
+        </div>
     </header>
 
-    <nav id="side-menu">
-        <div class="close-btn" onclick="toggleMenu()">×</div>
-        <a href="#" onclick="filter('filmes')">🎬 Filmes</a>
-        <a href="#" onclick="filter('series')">📺 Séries</a>
-        <a href="#" onclick="filter('doramas')">🌸 Doramas</a>
-        <hr style="border: 0.5px solid #333; margin: 20px 0;">
-        <a href="https://t.me/seu_contato" target="_blank" style="color: #edbd0d;">💎 ASSINAR VIP</a>
-    </nav>
+    <div class="nav-top">
+        <div class="nav-item active" onclick="render('filmes')"><i class="fas fa-home"></i>Início</div>
+        <div class="nav-item" onclick="render('series')"><i class="fas fa-star"></i>Séries</div>
+        <div class="nav-item" onclick="render('doramas')"><i class="fas fa-heart"></i>Doramas</div>
+        <div class="nav-item" onclick="window.open('https://t.me/seu_contato')"><i class="fas fa-gem"></i>VIP</div>
+    </div>
 
-    <section class="hero" id="hero-banner">
-        <div class="hero-content">
-            <h1 id="hero-title">A Culpa é das Estrelas</h1>
-            <p id="hero-desc">Um romance emocionante que conquistou o mundo.</p>
-            <div class="hero-btns">
-                <button class="btn-play" onclick="playDefault()">▶ Assistir</button>
-                <button class="btn-info" onclick="filter('filmes')">ℹ Mais Info</button>
-            </div>
-        </div>
+    <section class="hero" id="hero-banner" style="background-image: linear-gradient(transparent, rgba(0,0,0,0.9)), url('capa1.webp');">
+        <button class="btn-assistir" onclick="playDefault()">ASSISTIR AGORA</button>
     </section>
 
-    <main>
-        <h2 id="cat-title">filmes</h2>
-        <div class="grid" id="movie-grid"></div>
-    </main>
+    <h2 class="section-title">Mais Populares</h2>
+    <div class="grid" id="movie-grid"></div>
 
     <div id="video-overlay" class="overlay">
         <div class="overlay-content">
             <span class="close-overlay" onclick="closeVid()">×</span>
-            <h3 id="playing-title"></h3>
+            <h3 id="playing-title" style="color:white; text-align:center;"></h3>
             <div id="player-wrap"></div>
         </div>
     </div>
