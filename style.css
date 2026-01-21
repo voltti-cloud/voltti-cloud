@@ -1,22 +1,127 @@
-:root { --cyan: #00e5ff; --bg: #050505; }
-body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; }
-header { display: flex; justify-content: space-between; padding: 15px 20px; background: #000; align-items: center; }
-.header-right { display: flex; align-items: center; }
-#search-input { background: #111; border: 1px solid var(--cyan); color: white; border-radius: 5px; padding: 5px; margin-right: 10px; width: 120px; }
+:root {
+    --cyan: #00e5ff;
+    --bg: #050505;
+    --card-bg: #121212;
+}
 
-#side-menu { position: fixed; left: -250px; width: 250px; height: 100%; background: rgba(0,0,0,0.95); transition: 0.3s; z-index: 10000; top: 0; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
+body {
+    background-color: var(--bg);
+    color: white;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding-bottom: 30px;
+}
+
+/* Header e Nav (Mantendo o que você gostou) */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: #000;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-top {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    background: #000;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    color: #888;
+    cursor: pointer;
+}
+
+.nav-item.active { color: var(--cyan); }
+
+/* BANNER HERO (Ajustado) */
+.hero {
+    margin: 15px;
+    height: 180px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.btn-assistir {
+    background: var(--cyan);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+/* O CATÁLOGO ORGANIZADO (GRID) */
+.section-title {
+    font-size: 16px;
+    margin: 20px 15px 10px;
+    color: var(--cyan);
+    text-transform: uppercase;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 filmes por linha no celular */
+    gap: 12px;
+    padding: 0 15px;
+}
+
+.card {
+    position: relative;
+    background-color: var(--card-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 2 / 3; /* Mantém todas as capas na mesma proporção */
+    border: 1px solid #222;
+    transition: transform 0.2s;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+}
+
+.card-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: #fff;
+    font-size: 9px;
+    padding: 15px 5px 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Corta o nome se for muito grande */
+}
+
+/* Estilo do Menu Lateral */
+#side-menu {
+    position: fixed;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #000;
+    z-index: 2000;
+    transition: 0.3s;
+    top: 0;
+}
 #side-menu.active { left: 0; }
-.menu-title { padding: 20px; color: var(--cyan); font-weight: bold; font-size: 18px; }
-#side-menu a { display: block; padding: 15px 25px; color: #ccc; text-decoration: none; font-size: 16px; border-bottom: 1px solid #111; }
-#side-menu a i { margin-right: 10px; width: 20px; }
-.close-btn { text-align: right; padding: 10px 20px; font-size: 30px; cursor: pointer; }
 
-.nav-top { display: flex; justify-content: space-around; padding: 12px 0; background: #000; border-bottom: 1px solid #1a1a1a; }
-.nav-item { display: flex; flex-direction: column; align-items: center; font-size: 10px; color: #888; cursor: pointer; }
-.hero { margin: 15px; height: 200px; border-radius: 12px; background-size: cover; background-position: center; display: flex; align-items: flex-end; justify-content: center; }
-.btn-assistir { background: var(--cyan); border: none; padding: 8px 20px; border-radius: 4px; font-weight: bold; margin-bottom: 15px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 15px; padding: 20px; }
-.card { height: 160px; background-size: cover; border-radius: 8px; position: relative; border: 1px solid #222; }
-.card-title { position: absolute; bottom: -20px; width: 100%; font-size: 10px; text-align: center; color: #bbb; }
-.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 20000; justify-content: center; align-items: center; }
-.overlay-content { width: 90%; position: relative; }
+/* Overlay do Player */
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 5000; justify-content: center; align-items: center; }
