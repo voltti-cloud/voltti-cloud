@@ -1,29 +1,35 @@
 const API_KEY = '014f3cfb4ad4f513360cfdf57f0f30c0';
+
 const conteudos = [
-    { titulo: "The Batman", videoID: "https://motor.voltti.cloud/stream/44?hash=24a8f1", tipo: "filme", genero: "Ação" },
-    { titulo: "Crepusculo", videoID: "https://motor.voltti.cloud/stream/18?hash=c08e43", tipo: "filme", genero: "Romance" },
+    { titulo: "Crepúsculo", videoID: "https://motor.voltti.cloud/stream/18?hash=c08e43", tipo: "filme", genero: "Romance" },
     { titulo: "Lua Nova", videoID: "https://motor.voltti.cloud/stream/19?hash=32c817", tipo: "filme", genero: "Romance" },
-    { titulo: "Homem Aranha 1", videoID: "https://motor.voltti.cloud/stream/14?hash=b15349", tipo: "filme", genero: "Ação" },
-    { titulo: "Vingadores", videoID: "https://motor.voltti.cloud/stream/55?hash=271e64", tipo: "filme", genero: "Ação" },
-    { titulo: "Avatar", videoID: "https://motor.voltti.cloud/stream/46?hash=dc96d7", tipo: "filme", genero: "Ficção" },
-    { titulo: "As Branquelas", videoID: "https://motor.voltti.cloud/stream/53?hash=13403f", tipo: "filme", genero: "Comédia" },
-    { 
-        titulo: "A Má Mãe", tipo: "dorama", genero: "Dorama",
-        episodios: [{ nome: "Episódio 01", videoID: "1_tOC-zRf2hIDxrmZiHd3gpImrj0yIWzV" }]
-    }
+    { titulo: "The Batman", videoID: "https://motor.voltti.cloud/stream/44?hash=24a8f1", tipo: "filme", genero: "Ação" },
+    { titulo: "Avatar: O Caminho da Água", videoID: "https://motor.voltti.cloud/stream/34?hash=19f4de", tipo: "filme", genero: "Ficção" },
+    { titulo: "Deadpool & Wolverine", videoID: "https://motor.voltti.cloud/stream/60?hash=3334f1", tipo: "filme", genero: "Ação" },
+    { titulo: "Boca de Fumo", videoID: "https://motor.voltti.cloud/stream/59?hash=c83fc7", tipo: "filme", genero: "Ação" },
+    { titulo: "Vingança Brutal", videoID: "https://motor.voltti.cloud/stream/65?hash=7738f9", tipo: "filme", genero: "Ação" },
+    { titulo: "John Wick 3", videoID: "https://motor.voltti.cloud/stream/66?hash=0fde0a", tipo: "filme", genero: "Ação" },
+    { titulo: "Coringa", videoID: "https://motor.voltti.cloud/stream/62?hash=496cb3", tipo: "filme", genero: "Drama" },
+    { titulo: "Five Nights at Freddy's 2", videoID: "https://motor.voltti.cloud/stream/70?hash=7c66b9", tipo: "filme", genero: "Terror" }
+    // É só seguir colocando o nome do filme aqui e pronto.
 ];
 
 const grid = document.getElementById('movie-grid');
 
-// Função Mágica que busca a capa no TMDB pelo título
 async function buscarCapa(titulo) {
     try {
-        const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(titulo)}&language=pt-BR`);
-        const data = await response.json();
-        if (data.results && data.results[0].poster_path) {
-            return `https://image.tmdb.org/t/p/w500${data.results[0].poster_path}`;
+        // Agora forçamos a busca apenas na categoria 'movie' (filme) para não vir lixo
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(titulo)}&language=pt-BR&include_adult=false`;
+        
+        const resp = await fetch(url);
+        const data = await resp.json();
+        
+        // Pegamos o primeiro resultado que tenha uma capa disponível
+        if (data.results && data.results.length > 0) {
+            const filmeCerto = data.results.find(f => f.poster_path) || data.results[0];
+            return `https://image.tmdb.org/t/p/w500${filmeCerto.poster_path}`;
         }
-    } catch (e) { console.error("Erro ao buscar capa", e); }
+    } catch (e) { console.error("Erro na busca de: " + titulo); }
     return 'capa_padrao.webp';
 }
 
@@ -37,15 +43,17 @@ async function renderizar(lista) {
         secao.innerHTML = `<h3 class="genero-titulo">${gen}</h3><div class="genero-linha"></div>`;
         const linha = secao.querySelector('.genero-linha');
 
-        const itensDoGenero = lista.filter(i => i.genero === gen);
-        for (const item of itensDoGenero) {
+        const itens = lista.filter(i => i.genero === gen);
+        const cards = await Promise.all(itens.map(async (item) => {
             const capaURL = await buscarCapa(item.titulo);
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `<img src="${capaURL}"><p>${item.titulo}</p>`;
-            card.onclick = () => item.episodios ? gerarEps(item) : darPlay(item.videoID, item.titulo);
-            linha.appendChild(card);
-        }
+            card.onclick = () => darPlay(item.videoID, item.titulo);
+            return card;
+        }));
+
+        cards.forEach(c => linha.appendChild(c));
         grid.appendChild(secao);
     }
 }
@@ -53,12 +61,8 @@ async function renderizar(lista) {
 function darPlay(url, titulo) {
     const player = document.getElementById('main-player');
     document.getElementById('video-title').innerText = titulo;
-    player.src = url.includes('http') ? url : "https://drive.google.com/file/d/" + url + "/preview";
+    player.src = url;
     window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-function filtrar(tipo) {
-    renderizar(tipo === 'todos' ? conteudos : conteudos.filter(i => i.tipo === tipo));
 }
 
 window.onload = () => renderizar(conteudos);
