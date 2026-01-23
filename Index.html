@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VOLTTI | Premium</title>
+    <title>VOLTTI CLOUD | Player</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -12,35 +12,25 @@
     <header>
         <div class="logo">VOLTTI</div>
         <div class="search-box">
-            <input type="text" id="input-busca" placeholder="Buscar filme..." oninput="buscar()">
+            <input type="text" id="input-busca" placeholder="Buscar no catálogo..." oninput="buscar()">
             <i class="fas fa-search"></i>
         </div>
-        <div class="menu-toggle" id="mobile-menu" onclick="document.getElementById('nav-menu').classList.toggle('active')">
-            <span></span><span></span><span></span>
-        </div>
-        <nav id="nav-menu">
-            <ul>
-                <li><a href="#" onclick="filtrar('todos')">Início</a></li>
-                <li class="menu-destaque"><a href="pagar.html">ASSINAR</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main class="main-content">
-        <section class="video-container" id="player-section">
-            <div class="player-wrapper" id="container-iframe">
-                <div id="placeholder-player" style="text-align:center; padding: 20% 0;">
-                    <i class="fas fa-play-circle" style="font-size: 50px; color: #e50914;"></i>
-                    <p style="margin-top:10px; color:#888;">Selecione um filme para dar o play</p>
-                </div>
-                <iframe id="main-player" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="display:none;"></iframe>
+        <section class="video-container">
+            <div class="player-wrapper">
+                <video id="player-voltti" controls autoplay playsinline poster="capa_padrao.webp">
+                    <source id="video-source" src="" type="video/mp4">
+                    Seu navegador não suporta o player.
+                </video>
             </div>
-            <h2 id="video-title">Seja bem-vindo, Mateus</h2>
+            <h2 id="video-title">Escolha um filme para assistir</h2>
         </section>
         
         <section id="movie-grid"></section>
     </main>
 
-    <script src="script.js?v=player_fix_apk"></script>
+    <script src="script.js?v=player_proprio_v2"></script>
 </body>
 </html>
