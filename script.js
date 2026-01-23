@@ -3,32 +3,25 @@ const API_KEY = '014f3cfb4ad4f513360cfdf57f0f30c0';
 const conteudos = [
     { titulo: "Homem-Aranha", videoID: "https://motor.voltti.cloud/stream/14?hash=b15349", tipo: "filme", genero: "Marvel" },
     { titulo: "The Batman", videoID: "https://motor.voltti.cloud/stream/44?hash=24a8f1", tipo: "filme", genero: "DC" },
-    { titulo: "Tanque de Guerra", videoID: "https://motor.voltti.cloud/stream/116?hash=d3e098", tipo: "filme", genero: "Guerra" },
-    { titulo: "A Saga Crepúsculo", videoID: "https://motor.voltti.cloud/stream/18?hash=c08e43", tipo: "filme", genero: "Romance" }
-    // Os outros 46 filmes seguem o mesmo padrão
+    { titulo: "Tanque de Guerra", videoID: "https://motor.voltti.cloud/stream/116?hash=d3e098", tipo: "filme", genero: "Ação" },
+    { titulo: "A Saga Crepúsculo", videoID: "https://motor.voltti.cloud/stream/18?hash=c08e43", tipo: "filme", genero: "Romance" },
+    // Adicione os outros 46 itens aqui mantendo o tipo: 'filme', 'serie' ou 'dorama'
 ];
+
+async function buscarCapa(titulo) {
+    const resp = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(titulo)}&language=pt-BR`);
+    const data = await resp.json();
+    return data.results?.[0]?.poster_path ? `https://image.tmdb.org/t/p/w500${data.results[0].poster_path}` : 'V.png';
+}
 
 function darPlay(url, titulo) {
     const iframe = document.getElementById('voltti-iframe');
     const placeholder = document.getElementById('placeholder');
-    const titleDisp = document.getElementById('video-title');
-
-    titleDisp.innerText = "Assistindo no Voltti Player: " + titulo;
+    document.getElementById('video-title').innerText = "Assistindo: " + titulo;
     placeholder.style.display = 'none';
     iframe.style.display = 'block';
-
-    // O PULO DO GATO: Enviando para o seu player oficial via parâmetro
     iframe.src = "https://player.voltti.cloud/?v=" + encodeURIComponent(url);
-
     window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-async function buscarCapa(titulo) {
-    try {
-        const resp = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(titulo)}&language=pt-BR`);
-        const data = await resp.json();
-        return data.results?.[0]?.poster_path ? `https://image.tmdb.org/t/p/w500${data.results[0].poster_path}` : 'V.png';
-    } catch (e) { return 'V.png'; }
 }
 
 async function renderizar(lista) {
@@ -53,9 +46,14 @@ async function renderizar(lista) {
     }
 }
 
-function filtrar(tipo) {
-    if(tipo === 'todos') renderizar(conteudos);
-    else renderizar(conteudos.filter(c => c.tipo === tipo));
+// FUNÇÃO DE FILTRO PARA O MENU
+function filtrar(categoria) {
+    if (categoria === 'todos') {
+        renderizar(conteudos);
+    } else {
+        const filtrados = conteudos.filter(item => item.tipo === categoria);
+        renderizar(filtrados);
+    }
 }
 
 window.onload = () => renderizar(conteudos);
