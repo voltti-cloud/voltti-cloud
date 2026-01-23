@@ -9,7 +9,10 @@
 </head>
 <body>
     <header>
-        <div class="logo-container"><span class="logo-text">VOLTTI <span class="accent">CLOUD</span></span></div>
+        <div class="logo-container">
+            <img src="V.png" class="header-logo" alt="VOLTTI">
+            <span class="logo-text">VOLTTI <span class="accent">CLOUD</span></span>
+        </div>
         <nav class="categories-nav">
             <button class="nav-btn" onclick="filtrar('todos')">Início</button>
             <button class="nav-btn" onclick="filtrar('filme')">Filmes</button>
@@ -23,11 +26,11 @@
             <div class="video-container">
                 <iframe id="voltti-iframe" src="about:blank" frameborder="0" allowfullscreen allow="autoplay; fullscreen"></iframe>
                 <div id="placeholder" class="placeholder">
-                    <i class="fas fa-play-circle" style="font-size: 3rem; color: #E60000;"></i>
-                    <p style="color:white; margin-top:10px;">Selecione para assistir no Player Oficial</p>
+                    <i class="fas fa-play-circle"></i>
+                    <p>Toque para assistir</p>
                 </div>
             </div>
-            <h2 id="video-title">Catálogo Premium</h2>
+            <h2 id="video-title">Seja bem-vindo, Mateus</h2>
         </section>
 
         <section id="movie-grid" class="movie-grid"></section>
