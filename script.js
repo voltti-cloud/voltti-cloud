@@ -1,117 +1,70 @@
 const API_KEY = '014f3cfb4ad4f513360cfdf57f0f30c0';
 
 const conteudos = [
-    // --- ROMANCE (Ajustado Crepúsculo) ---
     { titulo: "A Saga Crepúsculo", videoID: "https://motor.voltti.cloud/stream/18?hash=c08e43", tipo: "filme", genero: "Romance" },
     { titulo: "A Saga Crepúsculo: Lua Nova", videoID: "https://motor.voltti.cloud/stream/19?hash=32c817", tipo: "filme", genero: "Romance" },
-    { titulo: "A Saga Crepúsculo: Eclipse", videoID: "https://motor.voltti.cloud/stream/20?hash=4d8896", tipo: "filme", genero: "Romance" },
-    { titulo: "A Saga Crepúsculo: Amanhecer - Parte 1", videoID: "https://motor.voltti.cloud/stream/22?hash=d297e2", tipo: "filme", genero: "Romance" },
-    { titulo: "A Saga Crepúsculo: Amanhecer - Parte 2", videoID: "https://motor.voltti.cloud/stream/21?hash=a7a7fc", tipo: "filme", genero: "Romance" },
-    { titulo: "A Cinco Passos de Você", videoID: "https://motor.voltti.cloud/stream/12?hash=1e921d", tipo: "filme", genero: "Romance" },
-    { titulo: "10 Coisas que Eu Odeio em Você", videoID: "https://motor.voltti.cloud/stream/40?hash=b10ea8", tipo: "filme", genero: "Romance" },
-
-    // --- AÇÃO (Ajustado Velozes e Furiosos) ---
     { titulo: "Velozes & Furiosos", videoID: "https://motor.voltti.cloud/stream/57?hash=b3eb50", tipo: "filme", genero: "Ação" },
     { titulo: "The Batman", videoID: "https://motor.voltti.cloud/stream/44?hash=24a8f1", tipo: "filme", genero: "Ação" },
-    { titulo: "Homem-Aranha", videoID: "https://motor.voltti.cloud/stream/14?hash=b15349", tipo: "filme", genero: "Ação" },
-    { titulo: "Homem-Aranha 2", videoID: "https://motor.voltti.cloud/stream/15?hash=43e939", tipo: "filme", genero: "Ação" },
-    { titulo: "Homem-Aranha 3", videoID: "https://motor.voltti.cloud/stream/16?hash=0a10b3", tipo: "filme", genero: "Ação" },
-    { titulo: "The Avengers: Os Vingadores", videoID: "https://motor.voltti.cloud/stream/55?hash=271e64", tipo: "filme", genero: "Ação" },
-    { titulo: "Cão de Briga", videoID: "https://motor.voltti.cloud/stream/48?hash=177e49", tipo: "filme", genero: "Ação" },
-    { titulo: "Missão: Impossível - Acerto de Contas Parte 1", videoID: "https://motor.voltti.cloud/stream/54?hash=5d6fd9", tipo: "filme", genero: "Ação" },
-    { titulo: "Boca de Fumo", videoID: "https://motor.voltti.cloud/stream/59?hash=c83fc7", tipo: "filme", genero: "Ação" },
     { titulo: "Deadpool & Wolverine", videoID: "https://motor.voltti.cloud/stream/60?hash=3334f1", tipo: "filme", genero: "Ação" },
-    { titulo: "Batman: O Cavaleiro das Trevas", videoID: "https://motor.voltti.cloud/stream/61?hash=8aabb1", tipo: "filme", genero: "Ação" },
-    { titulo: "Vingança Brutal", videoID: "https://motor.voltti.cloud/stream/65?hash=7738f9", tipo: "filme", genero: "Ação" },
-    { titulo: "Treinamento Brutal", videoID: "https://motor.voltti.cloud/stream/67?hash=0f147d", tipo: "filme", genero: "Ação" },
-    { titulo: "Bailarina: Do Universo de John Wick", videoID: "https://motor.voltti.cloud/stream/63?hash=7172a3", tipo: "filme", genero: "Ação" },
-    { titulo: "John Wick 3: Parabellum", videoID: "https://motor.voltti.cloud/stream/66?hash=0fde0a", tipo: "filme", genero: "Ação" },
-    { titulo: "Transformers", videoID: "https://motor.voltti.cloud/stream/73?hash=9be088", tipo: "filme", genero: "Ação" },
-    { titulo: "Corações de Ferro", videoID: "https://motor.voltti.cloud/stream/74?hash=e15450", tipo: "filme", genero: "Ação" },
-
-    // --- FICÇÃO (Ajustado Jogos Vorazes) ---
-    { titulo: "Jogos Vorazes", videoID: "https://motor.voltti.cloud/stream/28?hash=837065", tipo: "filme", genero: "Ficção" },
-    { titulo: "Avatar", videoID: "https://motor.voltti.cloud/stream/46?hash=dc96d7", tipo: "filme", genero: "Ficção" },
-    { titulo: "Avatar: O Caminho da Água", videoID: "https://motor.voltti.cloud/stream/34?hash=19f4de", tipo: "filme", genero: "Ficção" },
-    { titulo: "Círculo de Fogo", videoID: "https://motor.voltti.cloud/stream/9?hash=a51334", tipo: "filme", genero: "Ficção" },
-    { titulo: "Círculo de Fogo: A Revolta", videoID: "https://motor.voltti.cloud/stream/10?hash=3ca7e5", tipo: "filme", genero: "Ficção" },
-    { titulo: "Jogos Vorazes: Em Chamas", videoID: "https://motor.voltti.cloud/stream/29?hash=84123f", tipo: "filme", genero: "Ficção" },
-    { titulo: "Jogos Vorazes: A Esperança - Parte 1", videoID: "https://motor.voltti.cloud/stream/31?hash=f268cb", tipo: "filme", genero: "Ficção" },
-    { titulo: "Jogos Vorazes: A Esperança - Parte 2", videoID: "https://motor.voltti.cloud/stream/32?hash=2450d5", tipo: "filme", genero: "Ficção" },
-    { titulo: "A Chegada", videoID: "https://motor.voltti.cloud/stream/37?hash=83485d", tipo: "filme", genero: "Ficção" },
-    { titulo: "Percy Jackson e o Ladrão de Raios", videoID: "https://motor.voltti.cloud/stream/26?hash=962375", tipo: "filme", genero: "Ficção" },
-    { titulo: "Guardiões da Galáxia", videoID: "https://motor.voltti.cloud/stream/39?hash=1b295a", tipo: "filme", genero: "Ficção" },
-    { titulo: "Tron: Ares", videoID: "https://motor.voltti.cloud/stream/72?hash=0548f8", tipo: "filme", genero: "Ficção" },
-
-    // --- TERROR (Ajustado A Morte Pede Carona) ---
-    { titulo: "A Morte Pede Carona", videoID: "https://motor.voltti.cloud/stream/50?hash=a8c4d8", tipo: "filme", genero: "Terror" },
-    { titulo: "Verdade ou Desafio", videoID: "https://motor.voltti.cloud/stream/35?hash=b8b917", tipo: "filme", genero: "Terror" },
-    { titulo: "Resident Evil 2: Apocalipse", videoID: "https://motor.voltti.cloud/stream/51?hash=2b0cd8", tipo: "filme", genero: "Terror" },
-    { titulo: "Doce Vingança", videoID: "https://motor.voltti.cloud/stream/38?hash=0610c0", tipo: "filme", genero: "Terror" },
-    { titulo: "O Massacre da Serra Elétrica", videoID: "https://motor.voltti.cloud/stream/70?hash=7c66b9", tipo: "filme", genero: "Terror" },
-    { titulo: "Five Nights at Freddy's 2", videoID: "https://motor.voltti.cloud/stream/70?hash=7c66b9", tipo: "filme", genero: "Terror" },
-    { titulo: "Temporada de Sangue", videoID: "https://motor.voltti.cloud/stream/68?hash=231b9f", tipo: "filme", genero: "Terror" },
-
-    // --- DRAMA / COMÉDIA ---
-    { titulo: "O Menino do Pijama Listrado", videoID: "https://motor.voltti.cloud/stream/43?hash=ce7537", tipo: "filme", genero: "Drama" },
-    { titulo: "Oppenheimer", videoID: "https://motor.voltti.cloud/stream/56?hash=611132", tipo: "filme", genero: "Drama" },
-    { titulo: "Coringa", videoID: "https://motor.voltti.cloud/stream/62?hash=496cb3", tipo: "filme", genero: "Drama" },
-    { titulo: "As Branquelas", videoID: "https://motor.voltti.cloud/stream/53?hash=13403f", tipo: "filme", genero: "Comédia" },
-    { titulo: "Planos em Família 2", videoID: "https://motor.voltti.cloud/stream/71?hash=d2a5b1", tipo: "filme", genero: "Comédia" },
-    { titulo: "Dinheiro Suspeito", videoID: "https://motor.voltti.cloud/stream/64?hash=0577c6", tipo: "filme", genero: "Suspense" },
-    { titulo: "Seita Virtual", videoID: "https://motor.voltti.cloud/stream/69?hash=89b828", tipo: "filme", genero: "Suspense" }
+    { titulo: "A Morte Pede Carona", videoID: "https://motor.voltti.cloud/stream/50?hash=a8c4d8", tipo: "filme", genero: "Terror" }
+    // Adicione os outros da sua planilha aqui...
 ];
 
 const grid = document.getElementById('movie-grid');
 
 async function buscarCapa(titulo) {
     try {
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(titulo)}&language=pt-BR&include_adult=false`;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(titulo)}&language=pt-BR`;
         const resp = await fetch(url);
         const data = await resp.json();
-        
-        if (data.results && data.results.length > 0) {
-            let filme = data.results[0];
-            // Se for A Morte Pede Carona, garante a versão de 2007 (ou a mais popular)
-            if (titulo === "A Morte Pede Carona") {
-                filme = data.results.find(f => f.release_date && f.release_date.includes("2007")) || filme;
-            }
-            return `https://image.tmdb.org/t/p/w500${filme.poster_path}`;
-        }
-    } catch (e) { console.error("Erro na busca da capa:", titulo); }
-    return 'capa_padrao.webp';
+        return data.results && data.results[0] ? `https://image.tmdb.org/t/p/w500${data.results[0].poster_path}` : 'capa_padrao.webp';
+    } catch (e) { return 'capa_padrao.webp'; }
 }
 
 async function renderizar(lista) {
     grid.innerHTML = "";
     const generos = [...new Set(lista.map(i => i.genero))];
-
     for (const gen of generos) {
         const secao = document.createElement('div');
         secao.className = 'genero-secao';
         secao.innerHTML = `<h3 class="genero-titulo">${gen}</h3><div class="genero-linha"></div>`;
         const linha = secao.querySelector('.genero-linha');
-
         const itens = lista.filter(i => i.genero === gen);
-        const cards = await Promise.all(itens.map(async (item) => {
+
+        for (const item of itens) {
             const capaURL = await buscarCapa(item.titulo);
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `<img src="${capaURL}"><p>${item.titulo}</p>`;
             card.onclick = () => darPlay(item.videoID, item.titulo);
-            return card;
-        }));
-
-        cards.forEach(c => linha.appendChild(c));
+            linha.appendChild(card);
+        }
         grid.appendChild(secao);
     }
 }
 
 function darPlay(url, titulo) {
     const player = document.getElementById('main-player');
-    document.getElementById('video-title').innerText = titulo;
+    const placeholder = document.getElementById('placeholder-player');
+    const titleElem = document.getElementById('video-title');
+
+    titleElem.innerText = "Carregando: " + titulo;
+    
+    // Esconde o ícone e mostra o player
+    placeholder.style.display = 'none';
+    player.style.display = 'block';
+    
+    // Força o carregamento no iframe para rodar dentro do app
     player.src = url;
+
+    // Rola a tela para o topo para o cliente ver o vídeo
     window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function buscar() {
+    const termo = document.getElementById('input-busca').value.toLowerCase();
+    const filtrados = conteudos.filter(c => c.titulo.toLowerCase().includes(termo));
+    renderizar(filtrados);
 }
 
 window.onload = () => renderizar(conteudos);
