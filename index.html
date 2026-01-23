@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Voltti Player Official</title>
+    <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="video-container" id="videoContainer">
-        <video id="mainVideo" playsinline webkit-playsinline></video>
-        
-        <img src="logo.png" class="voltti-watermark" alt="Voltti">
+    <header>
+        <div class="logo-container"><span class="logo-text">VOLTTI <span class="accent">CLOUD</span></span></div>
+        <nav class="categories-nav">
+            <button class="nav-btn" onclick="filtrar('todos')">Início</button>
+            <button class="nav-btn" onclick="filtrar('filme')">Filmes</button>
+            <button class="nav-btn" onclick="filtrar('serie')">Séries</button>
+            <button class="nav-btn" onclick="filtrar('dorama')">Doramas</button>
+        </nav>
+    </header>
 
-        <div class="controls-overlay">
-            <div class="progress-area" id="progressArea">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div class="buttons-row">
-                <div class="left-side">
-                    <button id="playPauseBtn" class="play-icon"></button>
-                    <span id="timeDisplay" class="time-text">0:00 / 0:00</span>
-                </div>
-                <div class="right-side">
-                    <div class="volume-container">
-                        <button id="muteBtn" class="volume-icon">🔊</button>
-                        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
-                    </div>
-                    <button id="fullScreenBtn" class="fs-btn">⛶</button>
+    <main>
+        <section class="player-section">
+            <div class="video-container">
+                <iframe id="voltti-iframe" src="about:blank" frameborder="0" allowfullscreen allow="autoplay; fullscreen"></iframe>
+                <div id="placeholder" class="placeholder">
+                    <i class="fas fa-play-circle" style="font-size: 3rem; color: #E60000;"></i>
+                    <p style="color:white; margin-top:10px;">Selecione para assistir no Player Oficial</p>
                 </div>
             </div>
-        </div>
-    </div>
+            <h2 id="video-title">Catálogo Premium</h2>
+        </section>
+
+        <section id="movie-grid" class="movie-grid"></section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
