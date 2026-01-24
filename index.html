@@ -3,37 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VOLTTI CLOUD</title>
+    <title>Voltti Player PRO</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <span class="logo-text">VOLTTI <span class="accent">CLOUD</span></span>
-        </div>
-        <nav class="categories-nav">
-            <button class="nav-btn" onclick="filtrar('todos')">Início</button>
-            <button class="nav-btn" onclick="filtrar('filme')">Filmes</button>
-            <button class="nav-btn" onclick="filtrar('serie')">Séries</button>
-            <button class="nav-btn" onclick="filtrar('dorama')">Doramas</button>
-        </nav>
-    </header>
+    <div class="video-container" id="videoContainer">
+        <video id="mainVideo" playsinline webkit-playsinline></video>
+        
+        <img src="logo.png" class="voltti-watermark" alt="Voltti">
 
-    <main>
-        <section class="player-section">
-            <div class="video-container">
-                <iframe id="voltti-iframe" src="about:blank" frameborder="0" allowfullscreen></iframe>
-                <div id="placeholder" class="placeholder">
-                    <i class="fas fa-play-circle"></i>
-                    <p>Toque para assistir</p>
+        <div class="controls-overlay" id="controls">
+            <div class="progress-area" id="progressArea">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="buttons-row">
+                <div class="left-side">
+                    <button id="playPauseBtn"></button>
+                    <span id="timeDisplay" class="time-text">0:00 / 0:00</span>
+                </div>
+                <div class="right-side">
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+                    <button id="fullScreenBtn">⛶</button>
                 </div>
             </div>
-            <h2 id="video-title">Seja bem-vindo, Mateus</h2>
-        </section>
-
-        <section id="movie-grid" class="movie-grid"></section>
-    </main>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
