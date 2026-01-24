@@ -1,13 +1,19 @@
+// Função para converter links do Drive para Link Direto (Imagem ou Vídeo)
 function converterDrive(url) {
     if (!url || !url.includes('drive.google.com')) return url;
     const idMatch = url.match(/\/d\/(.+?)\//) || url.match(/id=(.+?)(&|$)/);
     if (idMatch && idMatch[1]) {
-        return "https://drive.google.com/uc?export=view&id=" + idMatch[1];
+        const id = idMatch[1];
+        // Adiciona confirm=t para evitar o aviso de vírus em vídeos do Drive
+        return url.toLowerCase().includes('mp4') || url.includes('EP') 
+            ? "https://drive.google.com/uc?export=download&id=" + id + "&confirm=t"
+            : "https://drive.google.com/uc?export=view&id=" + id;
     }
     return url;
 }
 
 const conteudos = [
+    // --- FILMES (Mapeados do seu ficheiro FILMES DO SITE) ---
     { titulo: "CREPUSCULO", videoID: "https://motor.voltti.cloud/stream/18?hash=c08e43", capa: "https://drive.google.com/file/d/1sN8mKuiCLvrrtZjIRvd6YaHT5e6Nud5d/view?usp=sharing", tipo: "filme", genero: "Romance" },
     { titulo: "LUA NOVA", videoID: "https://motor.voltti.cloud/stream/19?hash=32c817", capa: "https://drive.google.com/file/d/1zb3YG8fhIEKUqQ7hMLGqaYeBSpBKvlem/view?usp=drive_link", tipo: "filme", genero: "Romance" },
     { titulo: "ECLIPSE", videoID: "https://motor.voltti.cloud/stream/20?hash=4d8896", capa: "https://drive.google.com/file/d/1oykNfvBEW02UNFw6cvtP9_QdHrbSdJ79/view?usp=sharing", tipo: "filme", genero: "Romance" },
@@ -18,7 +24,7 @@ const conteudos = [
     { titulo: "HOMEM ARANHA 3", videoID: "https://motor.voltti.cloud/stream/16?hash=0a10b3", capa: "https://drive.google.com/file/d/1FAxXXJNz-Fgbw5KkqJpggnuKe69O1es6/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "CIRCULO DE FOGO", videoID: "https://motor.voltti.cloud/stream/9?hash=a51334", capa: "https://drive.google.com/file/d/160R7tKniC7yKz9CGW2uHkLXhGLMrjjYK/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "CIRCULO DE FOGO 2", videoID: "https://motor.voltti.cloud/stream/10?hash=3ca7e5", capa: "https://drive.google.com/file/d/1McMBjbgEZDODU9XkDo2T8uCVvjwhSZNn/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "5 PASSOS DE VOCE", videoID: "https://motor.voltti.cloud/stream/12?hash=1e921d", capa: "https://drive.google.com/file/d/1hBbYhiIj0ZOA6QavG1EX2CBmS8LPrT-Y/view?usp=sharing", tipo: "filme", genero: "Romance" },
+    { titulo: "5 PASSOS DE VOÇE", videoID: "https://motor.voltti.cloud/stream/12?hash=1e921d", capa: "https://drive.google.com/file/d/1hBbYhiIj0ZOA6QavG1EX2CBmS8LPrT-Y/view?usp=sharing", tipo: "filme", genero: "Romance" },
     { titulo: "MENINO DE PIJAMA", videoID: "https://motor.voltti.cloud/stream/43?hash=ce7537", capa: "https://drive.google.com/file/d/1yI6ls8mep7DO5wRH7viBLWmg10_jl2_-/view?usp=sharing", tipo: "filme", genero: "Drama" },
     { titulo: "THE BATMAN", videoID: "https://motor.voltti.cloud/stream/44?hash=24a8f1", capa: "https://drive.google.com/file/d/1pvLqt-_rlV-jRKDBMBV1mgzIsLNJzxN9/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "CAO DE BRIGA", videoID: "https://motor.voltti.cloud/stream/48?hash=177e49", capa: "https://drive.google.com/file/d/1arLPZsCH4m9V1F3r7DjtJA0cNE-hKtGb/view?usp=sharing", tipo: "filme", genero: "Ação" },
@@ -80,7 +86,9 @@ function darPlay(url, titulo) {
     document.getElementById('video-title').innerText = "Assistindo agora: " + titulo;
     placeholder.style.display = 'none';
     iframe.style.display = 'block';
-    iframe.src = "https://player.voltti.cloud/?v=" + encodeURIComponent(url);
+    
+    // Converte links do Drive e envia para o player oficial
+    iframe.src = "https://player.voltti.cloud/?v=" + encodeURIComponent(converterDrive(url));
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
