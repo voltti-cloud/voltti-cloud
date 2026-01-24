@@ -1,19 +1,15 @@
-// Função para converter links do Drive para Link Direto (Imagem ou Vídeo)
 function converterDrive(url) {
     if (!url || !url.includes('drive.google.com')) return url;
     const idMatch = url.match(/\/d\/(.+?)\//) || url.match(/id=(.+?)(&|$)/);
     if (idMatch && idMatch[1]) {
-        const id = idMatch[1];
-        // Adiciona confirm=t para evitar o aviso de vírus em vídeos do Drive
-        return url.toLowerCase().includes('mp4') || url.includes('EP') 
-            ? "https://drive.google.com/uc?export=download&id=" + id + "&confirm=t"
-            : "https://drive.google.com/uc?export=view&id=" + id;
+        // Link direto que o navegador aceita para imagens e vídeos
+        return "https://drive.google.com/uc?export=view&id=" + idMatch[1] + "&confirm=t";
     }
     return url;
 }
 
 const conteudos = [
-    // --- FILMES (Mapeados do seu ficheiro FILMES DO SITE) ---
+    // --- FILMES (49 Títulos Mapeados) ---
     { titulo: "CREPUSCULO", videoID: "https://motor.voltti.cloud/stream/18?hash=c08e43", capa: "https://drive.google.com/file/d/1sN8mKuiCLvrrtZjIRvd6YaHT5e6Nud5d/view?usp=sharing", tipo: "filme", genero: "Romance" },
     { titulo: "LUA NOVA", videoID: "https://motor.voltti.cloud/stream/19?hash=32c817", capa: "https://drive.google.com/file/d/1zb3YG8fhIEKUqQ7hMLGqaYeBSpBKvlem/view?usp=drive_link", tipo: "filme", genero: "Romance" },
     { titulo: "ECLIPSE", videoID: "https://motor.voltti.cloud/stream/20?hash=4d8896", capa: "https://drive.google.com/file/d/1oykNfvBEW02UNFw6cvtP9_QdHrbSdJ79/view?usp=sharing", tipo: "filme", genero: "Romance" },
@@ -32,9 +28,9 @@ const conteudos = [
     { titulo: "AVATAR 2", videoID: "https://motor.voltti.cloud/stream/34?hash=19f4de", capa: "https://drive.google.com/file/d/11ZDD3iUuOgSvsss6xH6Huqr9PwKBiRf7/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "VERDADE OU DESAFIO", videoID: "https://motor.voltti.cloud/stream/35?hash=b8b917", capa: "https://drive.google.com/file/d/1fDVfWbi902Zp9A566n6-bvWuOyZbfZld/view?usp=sharing", tipo: "filme", genero: "Terror" },
     { titulo: "RESIDENT EVIL 2", videoID: "https://motor.voltti.cloud/stream/51?hash=2b0cd8", capa: "https://drive.google.com/file/d/1N7T-7L1trIpj5tRdDQsBswoU5OXVym0e/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "A MORTE PEDE CARONA", videoID: "https://motor.voltti.cloud/stream/50?hash=a8c4d8", capa: "https://drive.google.com/file/d/1q0u98DhFSprxWVkBalks5lsizMaxRXpM/view?usp=sharing", tipo: "filme", genero: "Terror" },
+    { titulo: "MORTE PEDE CARONA", videoID: "https://motor.voltti.cloud/stream/50?hash=a8c4d8", capa: "https://drive.google.com/file/d/1q0u98DhFSprxWVkBalks5lsizMaxRXpM/view?usp=sharing", tipo: "filme", genero: "Terror" },
     { titulo: "GUARDIAO DA GALAXYA", videoID: "https://motor.voltti.cloud/stream/39?hash=1b295a", capa: "https://drive.google.com/file/d/1gp1z7k4xjrc_sV7-4VrvBQ7U7ouoT62Y/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "10 COISAS QUE ODEIO", videoID: "https://motor.voltti.cloud/stream/40?hash=b10ea8", capa: "https://drive.google.com/file/d/1_hiMVe5sif4OB1ki9CCIe6njNVWWsgOU/view?usp=sharing", tipo: "filme", genero: "Romance" },
+    { titulo: "10 COISAS ODEIO EM VC", videoID: "https://motor.voltti.cloud/stream/40?hash=b10ea8", capa: "https://drive.google.com/file/d/1_hiMVe5sif4OB1ki9CCIe6njNVWWsgOU/view?usp=sharing", tipo: "filme", genero: "Romance" },
     { titulo: "VINGADORES 1", videoID: "https://motor.voltti.cloud/stream/55?hash=271e64", capa: "https://drive.google.com/file/d/1416-Cz1Ny-M_84BrlwgFGp6vFiMqPII0/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "PERCY JACKSON 1", videoID: "https://motor.voltti.cloud/stream/26?hash=962375", capa: "https://drive.google.com/file/d/18SkyTkCLvg59SXAgpHiDndDjtpm6AJFM/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "AS BRANQUELAS", videoID: "https://motor.voltti.cloud/stream/53?hash=13403f", capa: "https://drive.google.com/file/d/1dLsAGNgommx_FNmQXtLXrLGNLOORTpfY/view?usp=sharing", tipo: "filme", genero: "Comédia" },
@@ -43,14 +39,14 @@ const conteudos = [
     { titulo: "JOGOS VORAZES 2", videoID: "https://motor.voltti.cloud/stream/29?hash=84123f", capa: "https://drive.google.com/file/d/1MQWux0t272eU7zuHestxPia_IwWSzHoX/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "JOGOS VORAZES 3", videoID: "https://motor.voltti.cloud/stream/31?hash=f268cb", capa: "https://drive.google.com/file/d/16n_-NXLq8ZWyeWwqCRMr5kOdEWIPrH9z/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "JOGOS VORAZES 4", videoID: "https://motor.voltti.cloud/stream/32?hash=2450d5", capa: "https://drive.google.com/file/d/1rgQLMQFa9lV8YzX2kQj7uM_NWEM5C9UC/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "DOCE VINGANÇA", videoID: "https://motor.voltti.cloud/stream/38?hash=0610c0", capa: "https://drive.google.com/file/d/1zPKWTRGegzoVj0qKlva8xy03c-rWzyiR/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "DOCE VINGANÇA 1", videoID: "https://motor.voltti.cloud/stream/38?hash=0610c0", capa: "https://drive.google.com/file/d/1zPKWTRGegzoVj0qKlva8xy03c-rWzyiR/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "MISSAO IMPOSSIVEL", videoID: "https://motor.voltti.cloud/stream/54?hash=5d6fd9", capa: "https://drive.google.com/file/d/1zPKWTRGegzoVj0qKlva8xy03c-rWzyiR/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "VELOZES E FURIOSOS", videoID: "https://motor.voltti.cloud/stream/57?hash=b3eb50", capa: "https://drive.google.com/file/d/16gQBDzIzNnPeD41jSdUGbFK1ChiBAjoe/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "VELOZES E FURIOSOS 1", videoID: "https://motor.voltti.cloud/stream/57?hash=b3eb50", capa: "https://drive.google.com/file/d/16gQBDzIzNnPeD41jSdUGbFK1ChiBAjoe/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "OPPENHEIMER", videoID: "https://motor.voltti.cloud/stream/56?hash=611132", capa: "https://drive.google.com/file/d/16gQBDzIzNnPeD41jSdUGbFK1ChiBAjoe/view?usp=sharing", tipo: "filme", genero: "Drama" },
     { titulo: "BOCA DE FUMO", videoID: "https://motor.voltti.cloud/stream/59?hash=c83fc7", capa: "https://drive.google.com/file/d/1PJ_2CyKB9n_fz0OHkPdiLHbHHGeFTXgd/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "DEADPOOL 3", videoID: "https://motor.voltti.cloud/stream/60?hash=3334f1", capa: "https://drive.google.com/file/d/12BxJHLyCJSWW4F48kk25PSdKK1ioj26J/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "BATMAN CAVALEIRO", videoID: "https://motor.voltti.cloud/stream/61?hash=8aabb1", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "CORINGA", videoID: "https://motor.voltti.cloud/stream/62?hash=496cb3", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "CORINGA 2019", videoID: "https://motor.voltti.cloud/stream/62?hash=496cb3", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "VINGANÇA BRUTAL", videoID: "https://motor.voltti.cloud/stream/65?hash=7738f9", capa: "https://drive.google.com/file/d/1U8xfUzOlS0eVzBPd3LLvTSydTv8V43Rp/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "DINHEIRO SUSPEITO", videoID: "https://motor.voltti.cloud/stream/64?hash=0577c6", capa: "https://drive.google.com/file/d/1tiA4UBEgJK-xS3tHj39TluTwFjpYuPdT/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "TREINAMENTO BRUTAL", videoID: "https://motor.voltti.cloud/stream/67?hash=0f147d", capa: "https://drive.google.com/file/d/1-_Ia76RMGW4XTkXuMhxMM6BPi0QjySYB/view?usp=sharing", tipo: "filme", genero: "Ação" },
@@ -59,12 +55,12 @@ const conteudos = [
     { titulo: "JHON WICHK", videoID: "https://motor.voltti.cloud/stream/66?hash=0fde0a", capa: "https://drive.google.com/file/d/1zVciALQFsVSo7PyRsRIYzTjWIShhnx3W/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "TEMPORADA SANGUE", videoID: "https://motor.voltti.cloud/stream/68?hash=231b9f", capa: "https://drive.google.com/file/d/1J5knt79f34bie1WIDr1TmQXGDIZ3vp8E/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "SEITA VIRTUAL", videoID: "https://motor.voltti.cloud/stream/69?hash=89b828", capa: "https://drive.google.com/file/d/1u_iugMF5mneaGROOrpwjALj42_U6EGGW/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "TRON ARES", videoID: "https://motor.voltti.cloud/stream/72?hash=0548f8", capa: "https://drive.google.com/file/d/1WINhmggEQM78k484XSYeQDTx3odLcNkQ/view?usp=sharing", tipo: "filme", genero: "Ficção" },
+    { titulo: "TRON ARES", videoID: "https://motor.voltti.cloud/stream/72?hash=0548f8", capa: "https://drive.google.com/file/d/1WINhmggEQM78k484XSYeQDTx3odLcNkQ/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "PLANOS FAMILIA 2", videoID: "https://motor.voltti.cloud/stream/71?hash=d2a5b1", capa: "https://drive.google.com/file/d/1nVhKcfGjnIC8fPNQGUGaQ-YCTq2rQoOJ/view?usp=sharing", tipo: "filme", genero: "Comédia" },
     { titulo: "TRANSFORMERS 1", videoID: "https://motor.voltti.cloud/stream/73?hash=9be088", capa: "https://drive.google.com/file/d/1NZnFdpGMe6R51I7SUTRHIMaAliaxJ0T-/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "TANQUE GUERRA", videoID: "https://motor.voltti.cloud/stream/74?hash=e15450", capa: "https://drive.google.com/file/d/12u-TsrQspBZO-uHaYG-I462zp8K4us7h/view?usp=sharing", tipo: "filme", genero: "Ação" },
 
-    // --- SÉRIE: LA CASA DE PAPEL ---
+    // --- SÉRIE: LA CASA DE PAPEL (13 Episódios) ---
     { titulo: "LCP T1 EP01", videoID: "https://motor.voltti.cloud/stream/75?hash=27f9b1", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
     { titulo: "LCP T1 EP02", videoID: "https://motor.voltti.cloud/stream/76?hash=45c7bb", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
     { titulo: "LCP T1 EP03", videoID: "https://motor.voltti.cloud/stream/77?hash=a65b40", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
@@ -87,7 +83,7 @@ function darPlay(url, titulo) {
     placeholder.style.display = 'none';
     iframe.style.display = 'block';
     
-    // Converte links do Drive e envia para o player oficial
+    // Converte e manda pro player oficial
     iframe.src = "https://player.voltti.cloud/?v=" + encodeURIComponent(converterDrive(url));
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
