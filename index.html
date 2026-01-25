@@ -14,23 +14,25 @@
             <h1>VOLTTI <span>CLOUD</span></h1>
         </div>
         
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="O que vamos assistir hoje?" onkeyup="buscar()">
+        <div class="search-bar-container">
+            <input type="text" id="search-input" placeholder="Pesquisar filmes, séries..." onkeyup="buscar()">
             <i class="fas fa-search"></i>
         </div>
 
-        <nav class="categories-menu">
-            <button onclick="filtrar('todos')">Início</button>
-            <button onclick="filtrar('filme')">Filmes</button>
-            <button onclick="filtrar('serie')">Séries</button>
-            <button onclick="filtrar('dorama')">Doramas</button>
-            <button onclick="filtrar('anime')">Animes</button>
-        </nav>
+        <div class="menu-container">
+            <nav class="categories-menu">
+                <button onclick="filtrar('todos')">Início</button>
+                <button onclick="filtrar('filme')">Filmes</button>
+                <button onclick="filtrar('serie')">Séries</button>
+                <button onclick="filtrar('dorama')">Doramas</button>
+                <button onclick="filtrar('anime')">Animes</button>
+            </nav>
+        </div>
     </header>
 
     <main>
         <section id="player-section">
-            <div id="placeholder" class="player-placeholder" onclick="document.getElementById('voltti-iframe').click()">
+            <div id="placeholder" class="player-placeholder">
                 <i class="fas fa-play"></i>
                 <p>Toque para assistir</p>
             </div>

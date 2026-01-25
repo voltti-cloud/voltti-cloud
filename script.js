@@ -40,9 +40,9 @@ const conteudos = [
     { titulo: "VELOZES FURIOSOS", videoID: "https://motor.voltti.cloud/stream/57?hash=b3eb50", capa: "https://drive.google.com/file/d/16gQBDzIzNnPeD41jSdUGbFK1ChiBAjoe/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "OPPENHEIMER", videoID: "https://motor.voltti.cloud/stream/56?hash=611132", capa: "https://drive.google.com/file/d/16gQBDzIzNnPeD41jSdUGbFK1ChiBAjoe/view?usp=sharing", tipo: "filme", genero: "Drama" },
     { titulo: "BOCA DE FUMO", videoID: "https://motor.voltti.cloud/stream/59?hash=c83fc7", capa: "https://drive.google.com/file/d/1PJ_2CyKB9n_fz0OHkPdiLHbHHGeFTXgd/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "DEADPOOL 3", videoID: "https://motor.voltti.cloud/stream/60?hash=3334f1", capa: "https://drive.google.com/file/d/12BxJHLyCJSWW4F48kk25PSdKK1ioj26J/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "DEADPOOL 3", videoID: "https://motor.voltti.cloud/stream/60?hash=3334f1", capa: "https://drive.google.com/file/d/12BxJHLyCJSWW4F48kk25PSdKK1ioj26J/view?usp=sharing", tipo: "filme", genero: "Ficção" },
     { titulo: "BATMAN TREVAS", videoID: "https://motor.voltti.cloud/stream/61?hash=8aabb1", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "CORINGA", videoID: "https://motor.voltti.cloud/stream/62?hash=496cb3", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "CORINGA", videoID: "https://motor.voltti.cloud/stream/62?hash=496cb3", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Drama" },
     { titulo: "VINGANÇA BRUTAL", videoID: "https://motor.voltti.cloud/stream/65?hash=7738f9", capa: "https://drive.google.com/file/d/1U8xfUzOlS0eVzBPd3LLvTSydTv8V43Rp/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "DINHEIRO SUSPEITO", videoID: "https://motor.voltti.cloud/stream/64?hash=0577c6", capa: "https://drive.google.com/file/d/1tiA4UBEgJK-xS3tHj39TluTwFjpYuPdT/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "TREINAMENTO BRUTAL", videoID: "https://motor.voltti.cloud/stream/67?hash=0f147d", capa: "https://drive.google.com/file/d/1-_Ia76RMGW4XTkXuMhxMM6BPi0QjySYB/view?usp=sharing", tipo: "filme", genero: "Ação" },
@@ -87,6 +87,8 @@ function renderizar(lista) {
     const grid = document.getElementById('movie-grid');
     if (!grid) return;
     grid.innerHTML = "";
+    
+    // Mostra tudo filtrado por gêneros
     const generos = [...new Set(lista.map(i => i.genero))];
     generos.forEach(gen => {
         const row = document.createElement('div');
@@ -109,7 +111,7 @@ function filtrar(cat) {
     if (cat === 'todos') {
         renderizar(conteudos);
     } else {
-        const filtrado = conteudos.filter(item => item.tipo.toLowerCase() === cat.toLowerCase() || item.genero.toLowerCase() === cat.toLowerCase());
+        const filtrado = conteudos.filter(item => item.tipo.toLowerCase() === cat.toLowerCase());
         renderizar(filtrado);
     }
 }
