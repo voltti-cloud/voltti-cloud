@@ -9,24 +9,24 @@
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="V.png" alt="" class="main-logo">
-            <h1>VOLTTI <span>CLOUD</span></h1>
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="V.png" alt="" class="main-logo">
+                <h1>VOLTTI <span>CLOUD</span></h1>
+            </div>
+            <div class="search-bar-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="O que deseja ver?" onkeyup="buscar()">
+            </div>
         </div>
-        <div class="search-bar-container">
-            <input type="text" id="search-input" placeholder="Pesquisar filmes, séries..." onkeyup="buscar()">
-            <i class="fas fa-search"></i>
-        </div>
-        <div class="menu-container">
-            <nav class="categories-menu">
-                <button onclick="window.location.reload()">Início</button>
-                <button onclick="filtrar('filme')">Filmes</button>
-                <button onclick="filtrar('serie')">Séries</button>
-                <button onclick="filtrar('novela')">Novelas</button>
-                <button onclick="filtrar('dorama')">Doramas</button>
-                <button onclick="filtrar('anime')">Animes</button>
-            </nav>
-        </div>
+        <nav class="categories-menu">
+            <button onclick="window.location.reload()">Início</button>
+            <button onclick="filtrar('filme')">Filmes</button>
+            <button onclick="filtrar('serie')">Séries</button>
+            <button onclick="filtrar('novela')">Novelas</button>
+            <button onclick="filtrar('dorama')">Doramas</button>
+            <button onclick="filtrar('anime')">Animes</button>
+        </nav>
     </header>
     <main>
         <section id="player-section">

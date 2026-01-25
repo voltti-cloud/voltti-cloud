@@ -1,27 +1,40 @@
-:root { --red: #ff0000; --dark: #000000; --gray: #121212; --white: #ffffff; }
-body { background-color: var(--dark); color: var(--white); font-family: 'Segoe UI', sans-serif; margin: 0; overflow-x: hidden; }
-header { padding: 20px 0; background: linear-gradient(to bottom, #111, transparent); }
-.logo-container { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-.main-logo { height: 50px; margin-right: 15px; }
-h1 { font-size: 1.8rem; margin: 0; letter-spacing: 2px; }
-h1 span { color: var(--red); font-weight: 900; }
-.search-bar-container { position: relative; width: 90%; max-width: 500px; margin: 0 auto 20px; }
-#search-input { width: 100%; background: #1a1a1a; border: 1px solid #333; padding: 12px 20px; border-radius: 30px; color: white; box-sizing: border-box; }
-.search-bar-container i { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #555; }
-.menu-container { width: 100%; overflow-x: auto; padding: 10px 0; scrollbar-width: none; }
-.categories-menu { display: flex; padding-left: 20px; gap: 15px; }
-.categories-menu button { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 8px 25px; border-radius: 20px; white-space: nowrap; font-weight: 600; }
-.categories-menu button:focus { background: var(--red); color: white; border-color: var(--red); }
-#player-section { width: 95%; margin: 20px auto; text-align: center; }
-.player-placeholder { width: 100%; aspect-ratio: 16/9; background: #050505; border: 2px solid #111; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.episodes-menu { background: #111; padding: 20px; border-radius: 10px; margin-top: 10px; }
-.episodes-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
-.episodes-list button { background: #1a1a1a; color: white; border: 1px solid #333; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-.episodes-list button:hover { background: var(--red); border-color: var(--red); }
-iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 10px; }
-.genre-row { margin: 30px 0; }
-.genre-title { padding-left: 20px; border-left: 5px solid var(--red); margin-bottom: 15px; }
+:root { 
+    --red: #ff0000; 
+    --dark-bg: #000000; 
+    --navy: #001a33; 
+    --gray-card: #121212; 
+    --white: #ffffff; 
+}
+body { background-color: var(--dark-bg); color: var(--white); font-family: 'Segoe UI', sans-serif; margin: 0; overflow-x: hidden; }
+header { background: linear-gradient(180deg, var(--navy) 0%, transparent 100%); padding-top: 15px; }
+.header-top { display: flex; flex-direction: column; align-items: center; gap: 15px; padding: 0 20px; }
+.logo-container { display: flex; align-items: center; gap: 10px; }
+.main-logo { height: 40px; }
+h1 { font-size: 1.5rem; margin: 0; }
+h1 span { color: var(--red); font-weight: bold; }
+
+.search-bar-container { position: relative; width: 90%; max-width: 400px; }
+#search-input { width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 10px 15px 10px 40px; border-radius: 20px; color: white; }
+.search-bar-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888; }
+
+.categories-menu { display: flex; overflow-x: auto; padding: 15px 20px; gap: 15px; scrollbar-width: none; }
+.categories-menu button { background: none; border: none; color: #ccc; font-weight: 600; font-size: 0.9rem; white-space: nowrap; cursor: pointer; transition: 0.3s; }
+.categories-menu button:hover { color: var(--white); border-bottom: 2px solid var(--navy); }
+
+#player-section { width: 100%; max-width: 900px; margin: 20px auto; text-align: center; }
+.player-placeholder { width: 100%; aspect-ratio: 16/9; background: #050505; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--navy); }
+.player-placeholder i { font-size: 3rem; color: var(--navy); margin-bottom: 10px; }
+iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 10px; background: black; }
+
+.episodes-menu { background: var(--navy); padding: 20px; border-radius: 10px; margin-top: 15px; }
+.episodes-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+.episodes-list button { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.episodes-list button:hover { background: var(--white); color: var(--navy); }
+
+.genre-row { margin: 25px 0; }
+.genre-title { padding-left: 20px; font-size: 1.1rem; color: #eee; margin-bottom: 15px; }
 .cards-container { display: flex; gap: 15px; overflow-x: auto; padding: 10px 20px; scrollbar-width: none; }
-.card { min-width: 130px; cursor: pointer; transition: 0.3s; text-align: center; }
-.card img { width: 100%; height: 190px; object-fit: cover; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-.card p { font-size: 0.85rem; margin-top: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card { min-width: 120px; text-align: center; cursor: pointer; transition: 0.3s; }
+.card:hover { transform: scale(1.05); }
+.card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+.card p { font-size: 0.8rem; margin-top: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
