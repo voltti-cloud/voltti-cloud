@@ -9,17 +9,16 @@
 </head>
 <body>
     <header>
-        <div class="header-main">
+        <div class="top-nav">
             <div class="logo" onclick="window.location.reload()">
-                <img src="V.png" alt="">
-                <h1>VOLTTI <span>CLOUD</span></h1>
+                <h1>VOLTTI<span>CLOUD</span></h1>
             </div>
-            <div class="search-box">
+            <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" id="search-input" placeholder="Buscar filmes, séries..." onkeyup="buscar()">
+                <input type="text" id="search-input" placeholder="O que vamos assistir?" onkeyup="buscar()">
             </div>
         </div>
-        <nav class="nav-bar">
+        <nav class="cat-nav">
             <button onclick="filtrar('filme')">Filmes</button>
             <button onclick="filtrar('serie')">Séries</button>
             <button onclick="filtrar('novela')">Novelas</button>
@@ -27,15 +26,32 @@
             <button onclick="filtrar('anime')">Animes</button>
         </nav>
     </header>
+
     <main>
-        <section id="player-container">
-            <div id="placeholder" class="placeholder"><i class="fas fa-play-circle"></i><p>Selecione para assistir</p></div>
-            <h2 id="video-title">Bem-vindo, Mateus</h2>
-            <div id="episodes-menu" style="display:none;" class="episodes-menu">
-                <div id="episodes-list" class="episodes-list"></div>
+        <section id="hero-section" class="vizer-hero">
+            <div class="hero-content">
+                <p class="hero-label">Oppenheimer JÁ DISPONÍVEL!</p>
+                <h2 class="hero-title">OPPENHEIMER</h2>
+                <div class="hero-meta">2023 | 3h | ★★★★★</div>
+                <div class="hero-btns">
+                    <button class="btn-play" onclick="darPlay('https://motor.voltti.cloud/stream/56?hash=611132', 'OPPENHEIMER')">
+                        <i class="fas fa-play"></i> ASSISTIR
+                    </button>
+                    <button class="btn-later">
+                        <i class="fas fa-bookmark"></i> VER DEPOIS
+                    </button>
+                </div>
             </div>
-            <iframe id="voltti-iframe" allowfullscreen style="display:none;"></iframe>
         </section>
+
+        <h2 id="current-title" class="section-indicator">Recomendados para Mateus</h2>
+        
+        <div id="episodes-menu" style="display:none;" class="episodes-wrapper">
+            <div id="episodes-list" class="episodes-grid"></div>
+        </div>
+
+        <iframe id="voltti-iframe" allowfullscreen style="display:none;"></iframe>
+
         <section id="movie-grid"></section>
     </main>
     <script src="script.js"></script>
