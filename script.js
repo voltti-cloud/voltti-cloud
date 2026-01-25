@@ -56,7 +56,7 @@ const conteudos = [
     { titulo: "TRANSFORMERS 1", videoID: "https://motor.voltti.cloud/stream/73?hash=9be088", capa: "https://drive.google.com/file/d/1NZnFdpGMe6R51I7SUTRHIMaAliaxJ0T-/view?usp=sharing", tipo: "filme", genero: "Ficção" },
     { titulo: "TANQUE GUERRA", videoID: "https://motor.voltti.cloud/stream/74?hash=e15450", capa: "https://drive.google.com/file/d/12u-TsrQspBZO-uHaYG-I462zp8K4us7h/view?usp=sharing", tipo: "filme", genero: "Guerra" },
 
-    // --- SÉRIES (Organizadas em Coleção) ---
+    // --- SÉRIE UNIFICADA: LA CASA DE PAPEL ---
     { 
         titulo: "LA CASA DE PAPEL", 
         capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", 
@@ -86,8 +86,8 @@ function darPlay(url, titulo) {
     const epContainer = document.getElementById('episodes-menu');
     if (!iframe) return;
     
-    epContainer.style.display = 'none'; // Fecha o menu se estiver aberto
-    document.getElementById('video-title').innerText = "Assistindo agora: " + titulo;
+    epContainer.style.display = 'none'; 
+    document.getElementById('video-title').innerText = "Assistindo: " + titulo;
     placeholder.style.display = 'none';
     iframe.style.display = 'block';
     iframe.src = "https://player.voltti.cloud/?v=" + encodeURIComponent(url);
