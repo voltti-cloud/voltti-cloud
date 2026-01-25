@@ -9,18 +9,17 @@
 </head>
 <body>
     <header>
-        <div class="header-top">
-            <div class="logo-container">
-                <img src="V.png" alt="" class="main-logo">
+        <div class="header-main">
+            <div class="logo" onclick="window.location.reload()">
+                <img src="V.png" alt="">
                 <h1>VOLTTI <span>CLOUD</span></h1>
             </div>
-            <div class="search-bar-container">
+            <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="search-input" placeholder="O que vamos assistir?" onkeyup="buscar()">
+                <input type="text" id="search-input" placeholder="Buscar filmes, séries..." onkeyup="buscar()">
             </div>
         </div>
-        <nav class="categories-menu">
-            <button onclick="window.location.reload()">Início</button>
+        <nav class="nav-bar">
             <button onclick="filtrar('filme')">Filmes</button>
             <button onclick="filtrar('serie')">Séries</button>
             <button onclick="filtrar('novela')">Novelas</button>
@@ -29,15 +28,15 @@
         </nav>
     </header>
     <main>
-        <section id="player-section">
-            <div id="placeholder" class="player-placeholder"><i class="fas fa-play"></i><p>Toque para assistir</p></div>
-            <h2 id="video-title">Seja bem-vindo, Mateus</h2>
+        <section id="player-container">
+            <div id="placeholder" class="placeholder"><i class="fas fa-play-circle"></i><p>Selecione para assistir</p></div>
+            <h2 id="video-title">Bem-vindo, Mateus</h2>
             <div id="episodes-menu" style="display:none;" class="episodes-menu">
                 <div id="episodes-list" class="episodes-list"></div>
             </div>
             <iframe id="voltti-iframe" allowfullscreen style="display:none;"></iframe>
         </section>
-        <section id="movie-grid" class="movie-grid"></section>
+        <section id="movie-grid"></section>
     </main>
     <script src="script.js"></script>
 </body>

@@ -36,12 +36,12 @@ const conteudos = [
     { titulo: "JOGOS VORAZES 3", videoID: "https://motor.voltti.cloud/stream/31?hash=f268cb", capa: "https://drive.google.com/file/d/16n_-NXLq8ZWyeWwqCRMr5kOdEWIPrH9z/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "JOGOS VORAZES 4", videoID: "https://motor.voltti.cloud/stream/32?hash=2450d5", capa: "https://drive.google.com/file/d/1rgQLMQFa9lV8YzX2kQj7uM_NWEM5C9UC/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "DOCE VINGACA 1", videoID: "https://motor.voltti.cloud/stream/38?hash=0610c0", capa: "https://drive.google.com/file/d/1zPKWTRGegzoVj0qKlva8xy03c-rWzyiR/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "MISSAO IMPOSSIVEL", videoID: "https://motor.voltti.cloud/stream/54?hash=5d6fd9", capa: "https://drive.google.com/file/d/1SJSH3jZ0dGuZjwuwW3oHBHREtiHT_bGh/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "MISSAO IMPOSSIVEL", videoID: "https://motor.voltti.cloud/stream/54?hash=5d6fd9", capa: "https://drive.google.com/file/d/1zPKWTRGegzoVj0qKlva8xy03c-rWzyiR/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "VELOZES E FURIOSOS 1", videoID: "https://motor.voltti.cloud/stream/57?hash=b3eb50", capa: "https://drive.google.com/file/d/16gQBDzIzNnPeD41jSdUGbFK1ChiBAjoe/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "Oppenheimer", videoID: "https://motor.voltti.cloud/stream/56?hash=611132", capa: "https://drive.google.com/file/d/16gQBDzIzNnPeD41jSdUGbFK1ChiBAjoe/view?usp=sharing", tipo: "filme", genero: "Drama" },
     { titulo: "BOCA DE FUMO", videoID: "https://motor.voltti.cloud/stream/59?hash=c83fc7", capa: "https://drive.google.com/file/d/1PJ_2CyKB9n_fz0OHkPdiLHbHHGeFTXgd/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "deadpool 3", videoID: "https://motor.voltti.cloud/stream/60?hash=3334f1", capa: "https://drive.google.com/file/d/12BxJHLyCJSWW4F48kk25PSdKK1ioj26J/view?usp=sharing", tipo: "filme", genero: "Ficção" },
-    { titulo: "BATMAN CAVALEIRO", videoID: "https://motor.voltti.cloud/stream/61?hash=8aabb1", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "deadpool 3", videoID: "https://motor.voltti.cloud/stream/60?hash=3334f1", capa: "https://drive.google.com/file/d/12BxJHLyCJSWW4F48kk25PSdKK1ioj26J/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "BATMAN TREVAS", videoID: "https://motor.voltti.cloud/stream/61?hash=8aabb1", capa: "https://drive.google.com/file/d/1gO-TM9e2Cqod8oQgkYCmAg7MWQs9lffZ/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "CORINGA 2019", videoID: "https://motor.voltti.cloud/stream/62?hash=496cb3", capa: "https://drive.google.com/file/d/1EXxDLyulMeWCaEtI-owejIPIULo1xhpc/view?usp=sharing", tipo: "filme", genero: "Drama" },
     { titulo: "VINGANÇA BRUTAL", videoID: "https://motor.voltti.cloud/stream/65?hash=7738f9", capa: "https://drive.google.com/file/d/1U8xfUzOlS0eVzBPd3LLvTSydTv8V43Rp/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "DINHEIRO SUSPEITO", videoID: "https://motor.voltti.cloud/stream/64?hash=0577c6", capa: "https://drive.google.com/file/d/1tiA4UBEgJK-xS3tHj39TluTwFjpYuPdT/view?usp=sharing", tipo: "filme", genero: "Ação" },
@@ -56,7 +56,7 @@ const conteudos = [
     { titulo: "TRANSFORMERS 1", videoID: "https://motor.voltti.cloud/stream/73?hash=9be088", capa: "https://drive.google.com/file/d/1NZnFdpGMe6R51I7SUTRHIMaAliaxJ0T-/view?usp=sharing", tipo: "filme", genero: "Ficção" },
     { titulo: "O TANQUE DE GUERRA", videoID: "https://motor.voltti.cloud/stream/74?hash=e15450", capa: "https://drive.google.com/file/d/12u-TsrQspBZO-uHaYG-I462zp8K4us7h/view?usp=sharing", tipo: "filme", genero: "Guerra" },
 
-    // --- SÉRIE UNIFICADA ---
+    // --- SÉRIE (ESTILO VIZER) ---
     { 
         titulo: "LA CASA DE PAPEL", 
         capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", 
@@ -79,7 +79,7 @@ const conteudos = [
         ]
     },
 
-    // --- NOVELA UNIFICADA ---
+    // --- NOVELA (ESTILO VIZER) ---
     { 
         titulo: "AMOR SEM FIM", 
         capa: "https://drive.google.com/file/d/1l_DpzxkCe3kq5ikgxdMRyWZVp4s_bKCD/view?usp=sharing", 
@@ -105,7 +105,7 @@ function darPlay(url, titulo) {
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-function abrirMenuSerie(serie) {
+function abrirMenuColecao(item) {
     const epContainer = document.getElementById('episodes-menu');
     const epList = document.getElementById('episodes-list');
     const title = document.getElementById('video-title');
@@ -114,14 +114,14 @@ function abrirMenuSerie(serie) {
 
     iframe.style.display = 'none';
     placeholder.style.display = 'flex';
-    title.innerText = serie.titulo + " - Escolha o Episódio";
+    title.innerText = item.titulo + " - Escolha o Episódio";
     epContainer.style.display = 'block';
     epList.innerHTML = "";
 
-    serie.episodios.forEach(item => {
+    item.episodios.forEach(ep => {
         const btn = document.createElement('button');
-        btn.innerText = item.ep;
-        btn.onclick = () => darPlay(item.url, serie.titulo + " - " + item.ep);
+        btn.innerText = ep.ep;
+        btn.onclick = () => darPlay(ep.url, item.titulo + " - " + ep.ep);
         epList.appendChild(btn);
     });
     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -131,6 +131,7 @@ function renderizar(lista) {
     const grid = document.getElementById('movie-grid');
     if (!grid) return;
     grid.innerHTML = "";
+    
     const generos = [...new Set(lista.map(i => i.genero))];
     generos.forEach(gen => {
         const row = document.createElement('div');
@@ -143,7 +144,7 @@ function renderizar(lista) {
             card.className = 'card';
             const capaFinal = converterDrive(item.capa);
             card.innerHTML = '<img src="' + capaFinal + '" onerror="this.src=\'V.png\'"><p>' + item.titulo + '</p>';
-            card.onclick = () => item.episodios ? abrirMenuSerie(item) : darPlay(item.videoID, item.titulo);
+            card.onclick = () => item.episodios ? abrirMenuColecao(item) : darPlay(item.videoID, item.titulo);
             container.appendChild(card);
         });
     });
@@ -151,8 +152,7 @@ function renderizar(lista) {
 
 function filtrar(cat) {
     document.getElementById('episodes-menu').style.display = 'none';
-    if(cat === 'todos') return renderizar(conteudos);
-    const filtrado = conteudos.filter(item => item.tipo.toLowerCase() === cat.toLowerCase());
+    const filtrado = cat === 'todos' ? conteudos : conteudos.filter(item => item.tipo.toLowerCase() === cat.toLowerCase());
     renderizar(filtrado);
 }
 
@@ -165,4 +165,4 @@ function buscar() {
     renderizar(resultados);
 }
 
-window.onload = () => renderizar(conteudos);
+window.addEventListener("load", () => renderizar(conteudos));
