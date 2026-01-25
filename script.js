@@ -1,9 +1,7 @@
-// Função Mestre: Converte link do Drive para o servidor de imagens lh3 (ultra rápido)
 function converterDrive(url) {
     if (!url || !url.includes('drive.google.com')) return url;
-    const id = url.match(/\/d\/(.+?)\//) || url.match(/id=(.+?)(&|$)/);
-    // Este formato lh3 evita a piscadeira e o bloqueio do Google
-    return id ? "https://lh3.googleusercontent.com/d/" + id[1] : url;
+    const idMatch = url.match(/\/d\/(.+?)\//) || url.match(/id=(.+?)(&|$)/);
+    return idMatch ? "https://lh3.googleusercontent.com/d/" + idMatch[1] : url;
 }
 
 const conteudos = [
@@ -26,7 +24,7 @@ const conteudos = [
     { titulo: "AVATAR 2", videoID: "https://motor.voltti.cloud/stream/34?hash=19f4de", capa: "https://drive.google.com/file/d/11ZDD3iUuOgSvsss6xH6Huqr9PwKBiRf7/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "VERDADE OU DESAFIO", videoID: "https://motor.voltti.cloud/stream/35?hash=b8b917", capa: "https://drive.google.com/file/d/1fDVfWbi902Zp9A566n6-bvWuOyZbfZld/view?usp=sharing", tipo: "filme", genero: "Terror" },
     { titulo: "RESIDENT EVIL 2", videoID: "https://motor.voltti.cloud/stream/51?hash=2b0cd8", capa: "https://drive.google.com/file/d/1N7T-7L1trIpj5tRdDQsBswoU5OXVym0e/view?usp=sharing", tipo: "filme", genero: "Ação" },
-    { titulo: "MORTE PEDE CARONA", videoID: "https://motor.voltti.cloud/stream/50?hash=a8c4d8", capa: "https://drive.google.com/file/d/1q0u98DhFSprxWVkBalks5lsizMaxRXpM/view?usp=sharing", tipo: "filme", genero: "Terror" },
+    { titulo: "MORTE CARONA", videoID: "https://motor.voltti.cloud/stream/50?hash=a8c4d8", capa: "https://drive.google.com/file/d/1q0u98DhFSprxWVkBalks5lsizMaxRXpM/view?usp=sharing", tipo: "filme", genero: "Terror" },
     { titulo: "GUARDIAO GALAXYA", videoID: "https://motor.voltti.cloud/stream/39?hash=1b295a", capa: "https://drive.google.com/file/d/1gp1z7k4xjrc_sV7-4VrvBQ7U7ouoT62Y/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "10 COISAS ODEIO", videoID: "https://motor.voltti.cloud/stream/40?hash=b10ea8", capa: "https://drive.google.com/file/d/1_hiMVe5sif4OB1ki9CCIe6njNVWWsgOU/view?usp=sharing", tipo: "filme", genero: "Romance" },
     { titulo: "VINGADORES 1", videoID: "https://motor.voltti.cloud/stream/55?hash=271e64", capa: "https://drive.google.com/file/d/1416-Cz1Ny-M_84BrlwgFGp6vFiMqPII0/view?usp=sharing", tipo: "filme", genero: "Ação" },
@@ -58,30 +56,63 @@ const conteudos = [
     { titulo: "TRANSFORMERS 1", videoID: "https://motor.voltti.cloud/stream/73?hash=9be088", capa: "https://drive.google.com/file/d/1NZnFdpGMe6R51I7SUTRHIMaAliaxJ0T-/view?usp=sharing", tipo: "filme", genero: "Ficção" },
     { titulo: "TANQUE GUERRA", videoID: "https://motor.voltti.cloud/stream/74?hash=e15450", capa: "https://drive.google.com/file/d/12u-TsrQspBZO-uHaYG-I462zp8K4us7h/view?usp=sharing", tipo: "filme", genero: "Guerra" },
 
-    // --- SÉRIE: LA CASA DE PAPEL ---
-    { titulo: "LCP T1 EP01", videoID: "https://motor.voltti.cloud/stream/75?hash=27f9b1", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP02", videoID: "https://motor.voltti.cloud/stream/76?hash=45c7bb", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP03", videoID: "https://motor.voltti.cloud/stream/77?hash=a65b40", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP04", videoID: "https://motor.voltti.cloud/stream/78?hash=f6fa53", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP05", videoID: "https://motor.voltti.cloud/stream/79?hash=8ff658", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP06", videoID: "https://motor.voltti.cloud/stream/80?hash=aa4b9e", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP07", videoID: "https://motor.voltti.cloud/stream/81?hash=b9a9fd", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP08", videoID: "https://motor.voltti.cloud/stream/82?hash=3f155e", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP09", videoID: "https://motor.voltti.cloud/stream/83?hash=32c83e", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP10", videoID: "https://motor.voltti.cloud/stream/84?hash=b01efc", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP11", videoID: "https://motor.voltti.cloud/stream/85?hash=c79322", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP12", videoID: "https://motor.voltti.cloud/stream/86?hash=0ef056", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
-    { titulo: "LCP T1 EP13", videoID: "https://motor.voltti.cloud/stream/87?hash=5b917a", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" }
+    // --- SÉRIES (Organizadas em Coleção) ---
+    { 
+        titulo: "LA CASA DE PAPEL", 
+        capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", 
+        tipo: "serie", 
+        genero: "Suspense",
+        episodios: [
+            { ep: "Epsódio 01", url: "https://motor.voltti.cloud/stream/75?hash=27f9b1" },
+            { ep: "Epsódio 02", url: "https://motor.voltti.cloud/stream/76?hash=45c7bb" },
+            { ep: "Epsódio 03", url: "https://motor.voltti.cloud/stream/77?hash=a65b40" },
+            { ep: "Epsódio 04", url: "https://motor.voltti.cloud/stream/78?hash=f6fa53" },
+            { ep: "Epsódio 05", url: "https://motor.voltti.cloud/stream/79?hash=8ff658" },
+            { ep: "Epsódio 06", url: "https://motor.voltti.cloud/stream/80?hash=aa4b9e" },
+            { ep: "Epsódio 07", url: "https://motor.voltti.cloud/stream/81?hash=b9a9fd" },
+            { ep: "Epsódio 08", url: "https://motor.voltti.cloud/stream/82?hash=3f155e" },
+            { ep: "Epsódio 09", url: "https://motor.voltti.cloud/stream/83?hash=32c83e" },
+            { ep: "Epsódio 10", url: "https://motor.voltti.cloud/stream/84?hash=b01efc" },
+            { ep: "Epsódio 11", url: "https://motor.voltti.cloud/stream/85?hash=c79322" },
+            { ep: "Epsódio 12", url: "https://motor.voltti.cloud/stream/86?hash=0ef056" },
+            { ep: "Epsódio 13", url: "https://motor.voltti.cloud/stream/87?hash=5b917a" }
+        ]
+    }
 ];
 
 function darPlay(url, titulo) {
     const iframe = document.getElementById('voltti-iframe');
     const placeholder = document.getElementById('placeholder');
+    const epContainer = document.getElementById('episodes-menu');
     if (!iframe) return;
+    
+    epContainer.style.display = 'none'; // Fecha o menu se estiver aberto
     document.getElementById('video-title').innerText = "Assistindo agora: " + titulo;
     placeholder.style.display = 'none';
     iframe.style.display = 'block';
     iframe.src = "https://player.voltti.cloud/?v=" + encodeURIComponent(url);
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function abrirMenuSerie(serie) {
+    const epContainer = document.getElementById('episodes-menu');
+    const epList = document.getElementById('episodes-list');
+    const title = document.getElementById('video-title');
+    const placeholder = document.getElementById('placeholder');
+    const iframe = document.getElementById('voltti-iframe');
+
+    iframe.style.display = 'none';
+    placeholder.style.display = 'flex';
+    title.innerText = serie.titulo + " - Escolha o Episódio";
+    epContainer.style.display = 'block';
+    epList.innerHTML = "";
+
+    serie.episodios.forEach(item => {
+        const btn = document.createElement('button');
+        btn.innerText = item.ep;
+        btn.onclick = () => darPlay(item.url, serie.titulo + " - " + item.ep);
+        epList.appendChild(btn);
+    });
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
@@ -101,13 +132,14 @@ function renderizar(lista) {
             card.className = 'card';
             const capaFinal = converterDrive(item.capa);
             card.innerHTML = '<img src="' + capaFinal + '" onerror="this.src=\'V.png\'"><p>' + item.titulo + '</p>';
-            card.onclick = () => darPlay(item.videoID, item.titulo);
+            card.onclick = () => item.episodios ? abrirMenuSerie(item) : darPlay(item.videoID, item.titulo);
             container.appendChild(card);
         });
     });
 }
 
 function filtrar(cat) {
+    document.getElementById('episodes-menu').style.display = 'none';
     const filtrado = conteudos.filter(item => item.tipo.toLowerCase() === cat.toLowerCase());
     renderizar(filtrado);
 }
@@ -121,7 +153,4 @@ function buscar() {
     renderizar(resultados);
 }
 
-// Inicialização única após carregamento total para evitar piscadeira
-window.addEventListener("load", function() {
-    renderizar(conteudos);
-});
+window.addEventListener("load", () => renderizar(conteudos));

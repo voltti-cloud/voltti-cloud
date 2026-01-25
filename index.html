@@ -13,14 +13,13 @@
             <img src="V.png" alt="Voltti Logo" class="main-logo">
             <h1>VOLTTI <span>CLOUD</span></h1>
         </div>
-        
         <div class="search-bar-container">
             <input type="text" id="search-input" placeholder="Pesquisar filmes, séries..." onkeyup="buscar()">
             <i class="fas fa-search"></i>
         </div>
-
         <div class="menu-container">
             <nav class="categories-menu">
+                <button onclick="window.location.reload()">Início</button>
                 <button onclick="filtrar('filme')">Filmes</button>
                 <button onclick="filtrar('serie')">Séries</button>
                 <button onclick="filtrar('dorama')">Doramas</button>
@@ -28,20 +27,17 @@
             </nav>
         </div>
     </header>
-
     <main>
         <section id="player-section">
-            <div id="placeholder" class="player-placeholder">
-                <i class="fas fa-play"></i>
-                <p>Toque para assistir</p>
-            </div>
+            <div id="placeholder" class="player-placeholder"><i class="fas fa-play"></i><p>Toque para assistir</p></div>
             <h2 id="video-title">Seja bem-vindo, Mateus</h2>
+            <div id="episodes-menu" style="display:none;" class="episodes-menu">
+                <div id="episodes-list" class="episodes-list"></div>
+            </div>
             <iframe id="voltti-iframe" allowfullscreen style="display:none;"></iframe>
         </section>
-
         <section id="movie-grid" class="movie-grid"></section>
     </main>
-
     <script src="script.js"></script>
 </body>
 </html>
