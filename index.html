@@ -16,11 +16,12 @@
             </div>
             <div class="search-bar-container">
                 <i class="fas fa-search"></i>
-                <input type="text" id="search-input" placeholder="O que deseja ver?" onkeyup="buscar()">
+                <input type="text" id="search-input" placeholder="O que vamos assistir?" onkeyup="buscar()">
             </div>
         </div>
         <nav class="categories-menu">
-            <button onclick="window.location.reload()">Filmes</button>
+            <button onclick="window.location.reload()">Início</button>
+            <button onclick="filtrar('filme')">Filmes</button>
             <button onclick="filtrar('serie')">Séries</button>
             <button onclick="filtrar('novela')">Novelas</button>
             <button onclick="filtrar('dorama')">Doramas</button>
