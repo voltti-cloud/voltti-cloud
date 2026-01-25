@@ -2,37 +2,45 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOLTTI CLOUD</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <span class="logo-text">VOLTTI <span class="accent">CLOUD</span></span>
+            <img src="V.png" alt="Voltti Logo" class="main-logo">
+            <h1>VOLTTI <span>CLOUD</span></h1>
         </div>
-        <nav class="categories-nav">
-            <button class="nav-btn" onclick="filtrar('todos')">Início</button>
-            <button class="nav-btn" onclick="filtrar('filme')">Filmes</button>
-            <button class="nav-btn" onclick="filtrar('serie')">Séries</button>
-            <button class="nav-btn" onclick="filtrar('dorama')">Doramas</button>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="O que vamos assistir hoje?" onkeyup="buscar()">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <nav class="categories-menu">
+            <button onclick="filtrar('todos')">Início</button>
+            <button onclick="filtrar('filme')">Filmes</button>
+            <button onclick="filtrar('serie')">Séries</button>
+            <button onclick="filtrar('dorama')">Doramas</button>
+            <button onclick="filtrar('anime')">Animes</button>
         </nav>
     </header>
 
     <main>
-        <section class="player-section">
-            <div class="video-container">
-                <iframe id="voltti-iframe" src="about:blank" frameborder="0" allowfullscreen></iframe>
-                <div id="placeholder" class="placeholder" onclick="alert('Selecione um filme abaixo!')">
-                    <div class="play-icon">▶</div>
-                    <p>Toque para assistir</p>
-                </div>
+        <section id="player-section">
+            <div id="placeholder" class="player-placeholder" onclick="document.getElementById('voltti-iframe').click()">
+                <i class="fas fa-play"></i>
+                <p>Toque para assistir</p>
             </div>
             <h2 id="video-title">Seja bem-vindo, Mateus</h2>
+            <iframe id="voltti-iframe" allowfullscreen style="display:none;"></iframe>
         </section>
 
         <section id="movie-grid" class="movie-grid"></section>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>

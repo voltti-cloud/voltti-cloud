@@ -1,26 +1,127 @@
-:root { --red: #E60000; --bg: #050505; }
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-body { background: var(--bg); color: white; overflow-x: hidden; width: 100vw; }
+:root {
+    --red: #ff0000;
+    --dark: #0a0a0a;
+    --gray: #1a1a1a;
+    --white: #ffffff;
+}
 
-header { background: #000; padding: 15px 10px; border-bottom: 2px solid var(--red); text-align: center; }
-.logo-text { font-size: 1.5rem; font-weight: bold; }
-.accent { color: var(--red); }
+body {
+    background-color: var(--dark);
+    color: var(--white);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding-bottom: 50px;
+}
 
-.categories-nav { display: flex; justify-content: center; gap: 8px; margin-top: 15px; padding: 5px; overflow-x: auto; }
-.nav-btn { background: #222; border: none; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; white-space: nowrap; }
+header {
+    padding: 15px;
+    text-align: center;
+    background: linear-gradient(to bottom, #000, transparent);
+}
 
-.player-section { padding: 10px; width: 100%; max-width: 800px; margin: 0 auto; }
-.video-container { background: #000; width: 100%; aspect-ratio: 16/9; position: relative; border-radius: 12px; overflow: hidden; border: 1px solid #333; }
-#voltti-iframe { width: 100%; height: 100%; display: none; border: none; }
-.placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; cursor: pointer; }
-.play-icon { font-size: 3rem; color: var(--red); margin-bottom: 10px; }
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
-#video-title { font-size: 0.9rem; padding: 10px; color: #aaa; text-align: center; }
+.main-logo { height: 40px; }
+h1 { font-size: 1.5rem; margin: 0; }
+h1 span { color: var(--red); }
 
-.movie-grid { padding: 15px; display: block; }
-.genre-row { margin-bottom: 25px; }
-.genre-title { font-size: 1.1rem; margin-bottom: 12px; padding-left: 10px; border-left: 4px solid var(--red); }
-.cards-container { display: flex; overflow-x: auto; gap: 12px; padding-bottom: 10px; }
-.card { min-width: 110px; width: 110px; text-align: center; }
-.card img { width: 110px; height: 165px; object-fit: cover; border-radius: 8px; border: 1px solid #222; }
-.card p { font-size: 0.7rem; margin-top: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* BUSCADOR ADAPTADO ANDROID */
+.search-bar {
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 45px 12px 20px;
+    border-radius: 25px;
+    border: none;
+    background: var(--gray);
+    color: white;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.search-bar i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+/* MENU DE CATEGORIAS */
+.categories-menu {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 5px;
+    scrollbar-width: none;
+}
+
+.categories-menu::-webkit-scrollbar { display: none; }
+
+.categories-menu button {
+    background: var(--gray);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.categories-menu button:active { background: var(--red); }
+
+/* GRID E CARDS */
+.genre-row { margin: 20px 0; }
+.genre-title { padding-left: 15px; border-left: 4px solid var(--red); margin-bottom: 10px; }
+
+.cards-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 15px;
+    scrollbar-width: none;
+}
+
+.card {
+    min-width: 120px;
+    max-width: 120px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.card p { font-size: 0.8rem; margin-top: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* PLAYER */
+#player-section { width: 95%; margin: 0 auto; text-align: center; }
+.player-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.player-placeholder i { font-size: 3rem; color: var(--red); margin-bottom: 10px; }
+iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 15px; }
