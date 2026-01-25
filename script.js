@@ -1,8 +1,9 @@
-// Função que converte o link de visualização do Drive em imagem real
+// Função Mestre: Usa o servidor lh3 para garantir que as capas apareçam sem bloqueio
 function linkDireto(url) {
     if (!url || !url.includes('drive.google.com')) return url;
     const id = url.match(/\/d\/(.+?)\//) || url.match(/id=(.+?)(&|$)/);
-    return id ? "https://drive.google.com/uc?id=" + id[1] : url;
+    // Formato googleusercontent é o único que não dá erro de "imagem quebrada"
+    return id ? "https://lh3.googleusercontent.com/d/" + id[1] : url;
 }
 
 const conteudos = [
@@ -54,10 +55,10 @@ const conteudos = [
     { titulo: "SEITA VIRTUAL", videoID: "https://motor.voltti.cloud/stream/69?hash=89b828", capa: "https://drive.google.com/file/d/1u_iugMF5mneaGROOrpwjALj42_U6EGGW/view?usp=sharing", tipo: "filme", genero: "Ação" },
     { titulo: "TRON ARES", videoID: "https://motor.voltti.cloud/stream/72?hash=0548f8", capa: "https://drive.google.com/file/d/1WINhmggEQM78k484XSYeQDTx3odLcNkQ/view?usp=sharing", tipo: "filme", genero: "Ficção" },
     { titulo: "PLANOS FAMILIA 2", videoID: "https://motor.voltti.cloud/stream/71?hash=d2a5b1", capa: "https://drive.google.com/file/d/1nVhKcfGjnIC8fPNQGUGaQ-YCTq2rQoOJ/view?usp=sharing", tipo: "filme", genero: "Comédia" },
-    { titulo: "TRANSFORMERS 1", videoID: "https://motor.voltti.cloud/stream/73?hash=9be088", capa: "https://drive.google.com/file/d/1NZnFdpGMe6R51I7SUTRHIMaAliaxJ0T-/view?usp=sharing", tipo: "filme", genero: "Ação" },
+    { titulo: "TRANSFORMERS 1", videoID: "https://motor.voltti.cloud/stream/73?hash=9be088", capa: "https://drive.google.com/file/d/1NZnFdpGMe6R51I7SUTRHIMaAliaxJ0T-/view?usp=sharing", tipo: "filme", genero: "Ficção" },
     { titulo: "TANQUE GUERRA", videoID: "https://motor.voltti.cloud/stream/74?hash=e15450", capa: "https://drive.google.com/file/d/12u-TsrQspBZO-uHaYG-I462zp8K4us7h/view?usp=sharing", tipo: "filme", genero: "Ação" },
 
-    // --- SÉRIE: LA CASA DE PAPEL (13 Episódios) ---
+    // --- SÉRIE: LA CASA DE PAPEL ---
     { titulo: "LCP T1 EP01", videoID: "https://motor.voltti.cloud/stream/75?hash=27f9b1", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
     { titulo: "LCP T1 EP02", videoID: "https://motor.voltti.cloud/stream/76?hash=45c7bb", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
     { titulo: "LCP T1 EP03", videoID: "https://motor.voltti.cloud/stream/77?hash=a65b40", capa: "https://drive.google.com/file/d/1vUGaSGmDSfAsuiedzf6oJI4ELPUSd0o3/view?usp=sharing", tipo: "serie", genero: "Suspense" },
@@ -75,9 +76,10 @@ const conteudos = [
 
 function darPlay(url, titulo) {
     const iframe = document.getElementById('voltti-iframe');
+    const placeholder = document.getElementById('placeholder');
     if (!iframe) return;
     document.getElementById('video-title').innerText = "Assistindo agora: " + titulo;
-    document.getElementById('placeholder').style.display = 'none';
+    placeholder.style.display = 'none';
     iframe.style.display = 'block';
     iframe.src = "https://player.voltti.cloud/?v=" + encodeURIComponent(url);
     window.scrollTo({top: 0, behavior: 'smooth'});
