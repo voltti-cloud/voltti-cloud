@@ -1,7 +1,9 @@
+// Função Mestre: Converte link do Drive para o servidor de imagens lh3 (ultra rápido)
 function converterDrive(url) {
     if (!url || !url.includes('drive.google.com')) return url;
     const id = url.match(/\/d\/(.+?)\//) || url.match(/id=(.+?)(&|$)/);
-    return id ? "https://drive.google.com/uc?id=" + id[1] : url;
+    // Este formato lh3 evita a piscadeira e o bloqueio do Google
+    return id ? "https://lh3.googleusercontent.com/d/" + id[1] : url;
 }
 
 const conteudos = [
@@ -87,8 +89,6 @@ function renderizar(lista) {
     const grid = document.getElementById('movie-grid');
     if (!grid) return;
     grid.innerHTML = "";
-    
-    // Mostra tudo filtrado por gêneros
     const generos = [...new Set(lista.map(i => i.genero))];
     generos.forEach(gen => {
         const row = document.createElement('div');
@@ -108,12 +108,8 @@ function renderizar(lista) {
 }
 
 function filtrar(cat) {
-    if (cat === 'todos') {
-        renderizar(conteudos);
-    } else {
-        const filtrado = conteudos.filter(item => item.tipo.toLowerCase() === cat.toLowerCase());
-        renderizar(filtrado);
-    }
+    const filtrado = conteudos.filter(item => item.tipo.toLowerCase() === cat.toLowerCase());
+    renderizar(filtrado);
 }
 
 function buscar() {
@@ -125,4 +121,7 @@ function buscar() {
     renderizar(resultados);
 }
 
-window.onload = () => renderizar(conteudos);
+// Inicialização única após carregamento total para evitar piscadeira
+window.addEventListener("load", function() {
+    renderizar(conteudos);
+});
