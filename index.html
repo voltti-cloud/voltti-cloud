@@ -13,6 +13,10 @@
             <div class="logo" onclick="window.location.reload()">
                 <h1>VOLTTI<span>CLOUD</span></h1>
             </div>
+            <div class="login-area">
+                <input type="email" id="user-email" placeholder="Seu e-mail VIP">
+                <button onclick="salvarLogin()"><i class="fas fa-unlock"></i> Entrar</button>
+            </div>
             <div class="search-bar">
                 <i class="fas fa-search"></i>
                 <input type="text" id="search-input" placeholder="Pesquisar..." onkeyup="buscar()">
@@ -22,37 +26,33 @@
             <button onclick="filtrar('filme')">Filmes</button>
             <button onclick="filtrar('serie')">Séries</button>
             <button onclick="filtrar('novela')">Novelas</button>
-            <button onclick="filtrar('dorama')">Doramas</button>
-            <button onclick="filtrar('anime')">Animes</button>
         </nav>
     </header>
-
     <main>
-        <section id="hero-section" class="hero">
-            <div class="hero-overlay">
-                <div class="hero-content">
-                    <span class="hero-badge">Destaque da semana</span>
-                    <h2 class="hero-title">OPPENHEIMER</h2>
-                    <p class="hero-desc">O épico de Christopher Nolan sobre a criação da bomba atômica.</p>
-                    <div class="hero-btns">
-                        <button class="btn-play" onclick="darPlay('https://motor.voltti.cloud/stream/56?hash=611132', 'OPPENHEIMER')">
-                            <i class="fas fa-play"></i> Assistir
-                        </button>
-                    </div>
-                </div>
+        <section id="player-section">
+            <div id="placeholder" class="player-placeholder"><i class="fas fa-play"></i><p>Toque para assistir</p></div>
+            <h2 id="video-title">Seja bem-vindo ao Voltti Cloud</h2>
+            <div id="episodes-menu" style="display:none;" class="episodes-menu">
+                <div id="episodes-list" class="episodes-list"></div>
             </div>
+            <iframe id="voltti-iframe" allowfullscreen style="display:none;"></iframe>
         </section>
-
-        <h2 id="current-title" class="section-title">Recomendados</h2>
-        
-        <div id="episodes-menu" style="display:none;" class="ep-menu">
-            <div id="episodes-list" class="ep-grid"></div>
-        </div>
-
-        <iframe id="voltti-iframe" allowfullscreen style="display:none;"></iframe>
-
-        <section id="movie-grid"></section>
+        <section id="movie-grid" class="movie-grid"></section>
     </main>
+    <script>
+        function salvarLogin() {
+            const email = document.getElementById('user-email').value;
+            if(email) {
+                localStorage.setItem('voltti_email', email);
+                alert("Login salvo! Verificando acesso VIP...");
+                location.reload();
+            }
+        }
+        window.addEventListener('load', () => {
+            const salvo = localStorage.getItem('voltti_email');
+            if(salvo) document.getElementById('user-email').value = salvo;
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
